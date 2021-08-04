@@ -1,0 +1,9 @@
+.Card {
+    display: flex;
+    direction: row;
+    margin:auto ;
+    width: 80%;
+    justify-content: space-around   ;
+    padding: 20px;
+    color:red
+}

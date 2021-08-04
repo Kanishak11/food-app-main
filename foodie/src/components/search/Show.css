@@ -1,0 +1,13 @@
+.show{
+max-height: 10vh;
+width: 100%;
+background-color: white;
+overflow: hidden;
+
+}
+
+.show li{
+    color: black;
+    width: 100%;
+    list-style: none;
+}

@@ -1,0 +1,117 @@
+:root {
+  --easing: cubic-bezier(0.33, 1, 0.68, 1);
+  --easing-2: cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+input[type="checkbox"]:checked + .box:after {
+  background-color: lightgrey;
+  height: 42.1%;
+  -webkit-transform: scale3d(8, 6, 1);
+          transform: scale3d(8, 6, 1);
+}
+
+input[type="checkbox"]:checked + .box .box__item {
+  -webkit-transform: translate(-40px, -50vh);
+          transform: translate(-40px, -50vh);
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  -webkit-transition-delay: calc(var(--index) * 0.1s);
+          transition-delay: calc(var(--index) * 0.1s);
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: transform, opacity;
+  transition-property: transform, opacity, -webkit-transform;
+}
+
+input[type="checkbox"]:checked + .box .icon {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'%3E %3Cpath d='M437.5 386.6L306.9 256l130.6-130.6c14.1-14.1 14.1-36.8 0-50.9-14.1-14.1-36.8-14.1-50.9 0L256 205.1 125.4 74.5c-14.1-14.1-36.8-14.1-50.9 0-14.1 14.1-14.1 36.8 0 50.9L205.1 256 74.5 386.6c-14.1 14.1-14.1 36.8 0 50.9 14.1 14.1 36.8 14.1 50.9 0L256 306.9l130.6 130.6c14.1 14.1 36.8 14.1 50.9 0 14-14.1 14-36.9 0-50.9z'/%3E %3C/svg%3E ");
+}
+
+.box {
+  padding: 20px 60px 60px 20px;
+  position: fixed;
+}
+
+.box:after {
+  content: '';
+  width: 50px;
+  height: 100px;
+  position: fixed;
+  background-color: whitesmoke;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transition: -webkit-transform 0.3s var(--easing);
+  transition: -webkit-transform 0.3s var(--easing);
+  transition: transform 0.3s var(--easing);
+  transition: transform 0.3s var(--easing), -webkit-transform 0.3s var(--easing);
+  z-index: -1;
+}
+
+.box__item {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s var(--easing-2) 0;
+  transition: opacity 0.2s var(--easing-2) 0;
+}
+
+.toggle {
+  background-color: #f8eaea;
+  border-radius: 10px;
+  -webkit-transform: translateY(20vh);
+          transform: translateY(20vh);
+  position: relative;
+}
+
+.toggle__checkbox {
+  display: none;
+}
+
+.icon {
+  position: inherit;
+  cursor: pointer;
+  display: block;
+  width: 80px;
+  height: 80px;
+  background: no-repeat center / 40%;
+  z-index: 100;
+  background-image: url("https://img-premium.flaticon.com/png/512/2273/premium/2273100.png?token=exp=1627455730~hmac=19a5b684f7bee3824f974b28a6c8aa69");
+}
+
+/* _________ BASE LAYOUT __________ */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h1, h2 {
+  margin: 1.75rem 0;
+  line-height: 1.15;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 1.802em;
+}
+
+h2 {
+  font-size: 1.302em;
+}
+
+.cart {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+/*# sourceMappingURL=caart.css.map */

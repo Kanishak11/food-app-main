@@ -1,0 +1,8 @@
+export const INCREASE_CUR_ITEM  = 'INCREASE_CUR_ITEM'
+export const PROCEED_TO_CHECKOUT='PROCEED_TO_CHECKOUT'
+export const ADD_TO_CART = 'ADD_TO_CART'
+export const ADD_TO_SUBTOTAL = 'ADD_TO_SUBTOTAL'
+export const ADD_GST = 'ADD_GST'
+export const GET_TOTAL = 'GET_TOTAL'
+export const DEC_QUANTITY = 'DEC_QUANTITY'
+export const INC_QUANTITY = 'INC_QUANTITY'

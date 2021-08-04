@@ -1,0 +1,8 @@
+h2{
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    font-weight: bolder;
+}

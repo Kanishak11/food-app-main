@@ -1,0 +1,89 @@
+.cartHeader{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+ .main{
+ 
+    margin: 0 10% 0 10%;
+     
+}
+
+.product {
+ 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom : 1px solid  rgba(255,0,0,0.3);
+    position:static;
+}
+.items{
+    width: 40%;
+    max-width: 40%;
+}
+.quantityPrice{
+    width: 20%;
+    max-width: 20%;
+    display: flex;
+    text-align: right;
+   
+}
+.quantityContainer{
+    width: 40%;
+    max-width: 40%;
+    display:flex;
+    flex-direction: row;
+}
+.quantityContainer p{
+    padding: 0 10px 0 10px;
+}
+.bi-plus-circle{
+    transform: translateY(-5px);
+
+}
+.summary {
+    display: flex;
+    flex-direction: column;
+}
+
+.summary li {
+    padding:10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.coupon{
+    width: 50%;
+}
+.offerInput{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+.totalContainer{
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+
+}
+ .checkout{
+     width: auto;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    justify-content: center;
+    flex-direction: row;
+ }
+
+ .checkout p{
+     font-weight: bolder;
+ }
+ .add{
+     background-image: url("https://pics.freeicons.io/uploads/icons/png/7172535051537355420-512.png");
+ }
