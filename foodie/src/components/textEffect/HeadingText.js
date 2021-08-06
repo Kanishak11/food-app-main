@@ -1,6 +1,6 @@
 import React from "react";
 import TextTransition, { presets } from "react-text-transition";
-import './CardHeading.css'
+import './HeadingText.css'
 const TEXTS = [
   "Crave for Better",
   "Food",
@@ -8,7 +8,7 @@ const TEXTS = [
   "Now"
 ];
 
-const CardHeading = () => {
+const HeadingText = () => {
   const [index, setIndex] = React.useState(0);
 
   React.useEffect(() => {
@@ -29,4 +29,4 @@ const CardHeading = () => {
   );
 };
 
-export default CardHeading;
+export default HeadingText;

@@ -3,6 +3,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import './CardsScrolls.css';
 import Cards from './Card' 
+import './Card.css'
 import { useDispatch , useSelector} from 'react-redux'
 import  {addToCart} from '../../actions/CartItemActions'
 
@@ -16,7 +17,8 @@ const responsive = {
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3
+    items: 6,
+    paritialVisibilityGutter: 40
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -54,7 +56,7 @@ export default function CardsGsap() {
     swipeable
     >
     {food_items.map((items , i ) => {
-                return <Cards name={items} key= {i}   proceed = { () => {dispatch(addToCart(myItems,{itemName: items ,priceOfThisItem : 350 , price :350 , quantity : 1}))}} />
+                return  <Cards name={items} key= {i}   proceed = { () => {dispatch(addToCart(myItems,{itemName: items ,priceOfThisItem : 350 , price :350 , quantity : 1}))}} />
             })}
         </Carousel>
     )

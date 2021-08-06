@@ -1,0 +1,101 @@
+{
+  "users": [
+    {
+      "id": 1
+    },
+    {
+      "email": "kanukmr0@gmail.com",
+      "password": "kanishal",
+      "id": 2
+    },
+    {
+      "email": "kanu@gmail.com",
+      "password": "kanishakk",
+      "id": 3
+    },
+    {
+      "email": "kanu@gmail.com",
+      "password": "sda",
+      "id": 4
+    },
+    {
+      "email": "sads",
+      "password": "a",
+      "id": 5
+    },
+    {
+      "email": "a",
+      "password": "sa",
+      "id": 6
+    },
+    {
+      "email": "kanukmr0@gmail.com",
+      "password": "kanishak",
+      "id": 7
+    },
+    {
+      "email": "kanukmr0@gmail.com",
+      "password": "asd",
+      "id": 8
+    },
+    {
+      "email": "kanu@gmail.com",
+      "password": "asd",
+      "id": 9
+    },
+    {
+      "email": "kanukmr0@gmail.com",
+      "password": "sda",
+      "id": 10
+    },
+    {
+      "email": "kanu@gmail.com",
+      "password": "asd",
+      "id": 11
+    },
+    {
+      "email": "kanu@gmail.com",
+      "password": "asxas",
+      "id": 12
+    },
+    {
+      "email": "dsads",
+      "password": "a",
+      "id": 13
+    },
+    {
+      "email": "kanukmr0@gmail.com",
+      "password": "dsa",
+      "id": 14
+    },
+    {
+      "email": "kanu@gmail.com",
+      "password": "dsafd",
+      "id": 15
+    },
+    {
+      "id": 16
+    },
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.ZmtjEo0KWEojummGQbnSPPyx3Q6YlKDm_2aom8FDkvc",
+      "id": 17
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

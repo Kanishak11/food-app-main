@@ -8,13 +8,12 @@ import Search from '../../components/search/Search'
 import CartMain from '../../components/cart/CartMain'
 import DisplaySearchItems from '../../components/displaysearchitems/DisplaySearchItems'
 import CardHeading from '../../components/card/CardHeading'
+import HeadingText from '../../components/textEffect/HeadingText'
 export default function Home() {
   return (
     <div>
       <Navb/>
       <Carousels/>
-      <Search/>
-      <br/>
       <DisplaySearchItems/>
       <CardHeading/>
       <CardsScroll/>

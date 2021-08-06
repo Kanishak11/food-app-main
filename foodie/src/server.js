@@ -42,9 +42,18 @@ server
         `<!doctype html>
     <html lang="">
     <head>
+    <link
+  async
+  rel="stylesheet"
+  href="//cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css"
+/>
+<script
+  async
+  src="//cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.js"
+></script>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta charset="utf-8" />
-        <title>Food-App</title>
+        <title>Food-App</title> 
         <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"crossorigin="anonymous"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         ${cssLinksFromAssets(assets, 'client')}
