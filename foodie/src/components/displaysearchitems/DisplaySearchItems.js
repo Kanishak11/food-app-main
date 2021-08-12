@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch , useSelector} from 'react-redux'
-import  {addToCart} from '../../actions/cartItemActions'
+import  {addToCart} from '../../actions/CartItemAction'
 import Cards from '../card/Card'
 import './displaySearchItem.css'
 
@@ -11,12 +11,11 @@ function DisplaySearchItems() {
     const myItems = useSelector( state => state.cartReducer)
     console.log(searchItems.searchItemList)
     return (
-        <div className="Card">
-        {searchItems.searchItemList.map( (items ,i ) => {
-            return <Cards name = {items} key={i}  proceed = { () => {dispatch(addToCart(myItems,{itemName: items ,priceOfThisItem : 350 , price :350 , quantity : 1}))}} > {items} </Cards>
-        })
+        <div className="CardsContainer">
+        {searchItems.searchItemList.map( (items ,i ) => 
+            <div className="CardWrap"> <Cards key={i} name = {items} proceed = { () => {dispatch(addToCart(myItems,{itemName: items ,priceOfThisItem : 350 , price :350 , quantity : 1}))}} />  </div>   )
     }
-        </div>
+    </div>
     )
 }
 

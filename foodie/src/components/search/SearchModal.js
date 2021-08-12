@@ -13,9 +13,10 @@ function SearchModal(props) {
       trigger={ <Button>Search</Button>}
     >
       <Modal.Header>Search For Your Itms</Modal.Header>
-      <Modal.Content image>
-        <Modal.Description>
+      <Modal.Content>
             <Search/>
+            <br/>
+        <Modal.Description>
            <DisplaySearchItems/>
         </Modal.Description>
       </Modal.Content>

@@ -1,8 +1,8 @@
 
 .Cards{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    max-height: 65vh;
+    max-width: 30vw;
+
     transform: scale(0.8,0.8);
 }
 .img{

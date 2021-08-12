@@ -30,6 +30,10 @@ export default function Navb() {
 <LinkContainer to="/menu">
     <Nav.Link>Menu</Nav.Link>
 </LinkContainer>
+<LinkContainer to="/order">
+    <Nav.Link>Order</Nav.Link>
+</LinkContainer>
+
 
       <NavDropdown title="Link" id="navbarScrollingDropdown">
         <NavDropdown.Item href="#action3">Action</NavDropdown.Item>

@@ -1,11 +1,3 @@
 .bodyFlex{
-display: inline;
-flex-direction: row;
-justify-content: right;
-width: 20%;
-}
-.borders {
-    margin-top: 20px;
-    padding-top: 10px;
-    border: 1px solid blue;
+width: 120vw;
 }

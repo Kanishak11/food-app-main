@@ -1,8 +1,9 @@
 import React from 'react'
 import {Button,Alert,Form} from 'react-bootstrap'
 import { useSelector ,useDispatch } from 'react-redux'
+import {Link} from 'react-router-dom'
 import './CartMain.css'
-import {incItemCount,decItemCount} from '../../actions/CartItemActions'
+import {incItemCount,decItemCount} from '../../actions/CartItemAction'
 
 
 export default function CartMain() {
@@ -37,7 +38,7 @@ export default function CartMain() {
                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
                 </svg>
             </div>
-            <p className="quantityPrice">Price of products:{itm.price}</p>
+            <p className="quantityPrice">price:{itm.price}</p>
             </div>
                 ) 
         })
@@ -70,7 +71,7 @@ export default function CartMain() {
             <p>{total}</p>
             </div>
             <Alert  variant = "primary" className="checkout">
-               <p>PROCEED TO CHECKOUT</p> 
+               <Link to="/order">PROCEED TO CHECKOUT </Link> 
             </Alert>
 
         </div>

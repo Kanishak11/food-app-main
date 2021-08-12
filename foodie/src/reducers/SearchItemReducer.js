@@ -1,4 +1,4 @@
-import {GET_SEARCH_ITEM} from '../constant/searchItems'
+import {GET_SEARCH_ITEM} from '../constant/SearchItemsConstant'
 
 const DEFAULT_STATE = {
     searchItemList: []

@@ -1,4 +1,4 @@
-import { ADD_TO_CART ,ADD_TO_SUBTOTAL,ADD_GST ,GET_TOTAL ,INC_QUANTITY ,DEC_QUANTITY } from "../constant/cartItems";
+import { ADD_TO_CART ,ADD_TO_SUBTOTAL,ADD_GST ,GET_TOTAL ,INC_QUANTITY ,DEC_QUANTITY } from "../constant/CartItemsConstant";
 
 
 const addItem = (item) => {
@@ -6,9 +6,6 @@ const addItem = (item) => {
     type : ADD_TO_CART,
     payload : item
  }
-}
-const decrementPaticularItem = () => {
-
 }
 const incrementPaticularItem = (data) => {
     return {

@@ -1,14 +1,10 @@
 import React from "react";
 import TextTransition, { presets } from "react-text-transition";
 import './HeadingText.css'
-const TEXTS = [
-  "Crave for Better",
-  "Food",
-  "Order",
-  "Now"
-];
 
-const HeadingText = () => {
+
+const HeadingText = (props) => {
+  TEXTS=[...props.data]
   const [index, setIndex] = React.useState(0);
 
   React.useEffect(() => {

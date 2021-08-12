@@ -1,5 +1,5 @@
-import { PROCEED_TO_CHECKOUT } from "../constant/cartItems"
-import { ADD_TO_CART ,ADD_TO_SUBTOTAL ,ADD_GST, GET_TOTAL,INC_QUANTITY,DEC_QUANTITY} from "../constant/cartItems"
+import { PROCEED_TO_CHECKOUT } from "../constant/CartItemsConstant"
+import { ADD_TO_CART ,ADD_TO_SUBTOTAL ,ADD_GST, GET_TOTAL,INC_QUANTITY,DEC_QUANTITY} from "../constant/CartItemsConstant"
 
 const DEFAULT_STATE = {
     items : [],

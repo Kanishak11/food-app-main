@@ -1,8 +1,11 @@
-.Card {
+.CardWrap {
+    height: 50%;
+    width: 50%;
+    padding: 20px;
+}
+
+.CardsContainer{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin:auto;
-    justify-content: space-around;
-    color:red
 }

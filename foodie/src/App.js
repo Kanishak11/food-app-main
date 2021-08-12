@@ -8,6 +8,7 @@ import LoginForm from './views/login/Login';
 import SignIn from './views/signIn/SignIn';
 import CartMain from './components/cart/CartMain';
 import Menu from './views/menu/Menu';
+import Order from './views/order/Order';
 
 
 
@@ -27,6 +28,9 @@ const App = () => (
   </Switch>
   <Switch>
     <Route exact path="/Menu" component={Menu} />
+  </Switch>
+  <Switch>
+    <Route exact path="/Order" component={Order} />
   </Switch>
   </Provider>
 );

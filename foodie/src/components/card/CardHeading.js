@@ -1,14 +1,10 @@
 import React from "react";
 import TextTransition, { presets } from "react-text-transition";
 import './CardHeading.css'
-const TEXTS = [
-  "Crave for Better",
-  "Food",
-  "Order",
-  "Now"
-];
 
-const CardHeading = () => {
+
+const CardHeading = (props) => {
+  const TEXTS = [...props.data]
   const [index, setIndex] = React.useState(0);
 
   React.useEffect(() => {
