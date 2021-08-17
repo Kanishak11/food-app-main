@@ -1,5 +1,5 @@
-import React from "react";
-import { Grid } from "semantic-ui-react";
+import React , {createRef} from "react";
+import { Grid ,Sticky ,Ref ,Rail,Segment } from "semantic-ui-react";
 import CartMain from "../../components/cart/CartMain";
 import SearchCards from "../../components/search/SearchCards";
 import "./MenuBody.css";
@@ -21,6 +21,7 @@ const food_items = [
 ];
 
 export default function MenuBody() {
+  const contextRef = createRef()
   const dispatch = useDispatch();
   const searchItems = useSelector( state => state.searchItem)
   const myItems = useSelector( state => state.cartReducer)  
@@ -29,16 +30,26 @@ export default function MenuBody() {
       <Grid.Column floated= "left" width={3}>
         <SideNav />
       </Grid.Column>
-      <Grid.Column  width={8}>
+      <Grid.Column width={8}>
         <br />
         <div className="bodyFlex">
           {food_items.map((items,i) => {return <div key={i}> <SearchCards  name ={items} image={items.image_src} proceed = { () => {dispatch(addToCart(myItems,{itemName: items ,priceOfThisItem : 350 , price :350 , quantity : 1}))}}   /> </div>})}
         </div>
       </Grid.Column>
-      <Grid.Column floated="right" width={5}>
-        <br />
+      <Grid.Column width={5}>
+       <Ref innerRef={contextRef}>
+       <Rail internal position='right'>
+        
+        <Sticky context={contextRef}>
+        <div className="CartInside">
         <CartMain />
+        </div>
+        </Sticky>
+      
+        </Rail>
+        </Ref>
       </Grid.Column>
+      
     </Grid>
   );
 }

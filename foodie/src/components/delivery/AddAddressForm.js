@@ -1,66 +1,91 @@
-import React from "react";
+import axios from "axios";
+import React,{useState} from "react";
+import { Button } from "semantic-ui-react";
 
 export default function AddAddressForm() {
+  const [address ,setAddress] = useState({})
+  const changeHandler = (e) =>{
+    console.log(address)
+    setAddress({...address , [e.target.name] : e.target.value})
+  }
+  const submitData = (e) =>{
+    e.preventDefault()
+      const promise = axios.post('http://localhost:4001/address',address)
+      promise.then((res) => {console.log(res)})
+      .catch(err=>console.log(err))
+  }
   return (
     <div>
-      <form class="ui form">
-        <h4 class="ui dividing header">Shipping Information</h4>
-        <div class="field">
+      <form className="ui form">
+        <h4 className="ui dividing header">Shipping Information</h4>
+        <div className="field">
           <label>Name</label>
-          <div class="two fields">
-            <div class="field">
+          <div className="two fields">
+            <div className="field">
               <input
                 type="text"
-                name="shipping[first-name]"
+                name="First Name"
                 placeholder="First Name"
+                onChange={changeHandler}
               />
             </div>
-            <div class="field">
+            <div className="field">
               <input
                 type="text"
-                name="shipping[last-name]"
+                name="Last-name"
                 placeholder="Last Name"
+                onChange={changeHandler}
+
               />
             </div>
           </div>
         </div>
-        <div class="field">
+        <div className="field">
           <label>Delivery Address</label>
-          <div class="fields">
-            <div class="twelve wide field">
+          <div className="fields">
+            <div className="twelve wide field">
               <input
                 type="text"
-                name="shipping[address]"
+                name="address"
                 placeholder="Street Address"
+                onChange={changeHandler}
               />
             </div>
-            <div class="four wide field">
+            <div className="four wide field">
               <input
                 type="text"
                 name="shipping[address-2]"
                 placeholder="Pin Code"
+                onChange={changeHandler}
               />
             </div>
           </div>
         </div>
-        <div class="field">
-        <div class="field">
+        <div className="field">
+        <div className="field">
           <label>Contact Detail</label>
-        <div class="six wide field">
+        <div className="six wide field">
               <input
                 type="Number"
                 name="Contact Detail"
                 placeholder="Contact Detail"
+                onChange={changeHandler}
               />
         </div>
         <label>Alternate Contact Detail</label>
-        <div class="six wide field">
+        <div className="six wide field">
               <input
                 type="Number"
                 name="Alternate Contact Detail"
                 placeholder="Alternate Contact Detail"
+                onChange={changeHandler}
+
               />
         </div>
+        <div className="ui center aligned container">
+          <Button onClick={submitData}>Submit</Button>
+        </div>
+        
         </div>
         </div>
       </form>

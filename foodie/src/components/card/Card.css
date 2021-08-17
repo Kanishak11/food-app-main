@@ -1,8 +1,7 @@
 
 .Cards{
-    max-height: 65vh;
+    max-height: 62vh;
     max-width: 30vw;
-
     transform: scale(0.8,0.8);
 }
 .img{

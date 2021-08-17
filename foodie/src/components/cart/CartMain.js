@@ -2,6 +2,7 @@ import React from 'react'
 import {Button,Alert,Form} from 'react-bootstrap'
 import { useSelector ,useDispatch } from 'react-redux'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 import './CartMain.css'
 import {incItemCount,decItemCount} from '../../actions/CartItemAction'
 
@@ -10,7 +11,11 @@ export default function CartMain() {
     const myItems = useSelector( state => state.cartReducer)
     const {subtotal ,GST , total} = useSelector (state =>state.cartReducer)
     const dipatch = useDispatch();
-
+    const sendCartItems = () => {
+    const promise = axios.post("http://localhost:4001/cart" ,myItems)
+        promise.then((res) =>{console.log(res)})
+        .catch((err) => {console.log(err)})
+    }
     return (
 
         <div className="main">
@@ -71,7 +76,7 @@ export default function CartMain() {
             <p>{total}</p>
             </div>
             <Alert  variant = "primary" className="checkout">
-               <Link to="/order">PROCEED TO CHECKOUT </Link> 
+               <Link to="/order"><Button onClick={sendCartItems}>PROCEED TO CHECKOUT</Button> </Link> 
             </Alert>
 
         </div>

@@ -10,7 +10,7 @@ import { addToCart } from "../../actions/CartItemAction";
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
-    items: 10,
+    items:  7,
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -19,11 +19,11 @@ const responsive = {
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 3,
+    items: 2,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 4,
+    items: 1,
   },
 };
 export default function CardsGsap(props) {
@@ -61,7 +61,7 @@ export default function CardsGsap(props) {
                 proceed={() => {
                   dispatch(
                     addToCart(myItems, {
-                      itemName: items,
+                      itemName: items.name,
                       priceOfThisItem: 350,
                       price: 350,
                       quantity: 1,

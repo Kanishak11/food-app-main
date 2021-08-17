@@ -79,6 +79,36 @@
     {
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.ZmtjEo0KWEojummGQbnSPPyx3Q6YlKDm_2aom8FDkvc",
       "id": 17
+    },
+    {
+      "username": "kanishak",
+      "password": "kanishak",
+      "id": 18
+    },
+    {
+      "username": "kanishak",
+      "password": "kanishak",
+      "id": 19
+    },
+    {
+      "username": "username",
+      "id": 20
+    },
+    {
+      "id": 21
+    },
+    {
+      "username": "kanu",
+      "id": 22
+    },
+    {
+      "username": "kanu",
+      "id": 23
+    },
+    {
+      "username": "kanu",
+      "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.ZmtjEo0KWEojummGQbnSPPyx3Q6YlKDm_2aom8FDkvc",
+      "id": 24
     }
   ],
   "posts": [
@@ -97,5 +127,117 @@
   ],
   "profile": {
     "name": "typicode"
+  },
+  "object": {
+    "email": "kanukmr0@gmail.com",
+    "password": "sadsaf"
+  },
+  "signIn": [
+    {
+      "username": "kanishak",
+      "id": 1
+    },
+    {
+      "UserName": "kansi",
+      "E-mail address": "dfjaknl",
+      "Password": "dsaf",
+      "id": 2
+    },
+    {
+      "UserName": "dsfajddfdsfdsgfa",
+      "E-mail address": "sdgvasdgfoinasd",
+      "Password": "dgasdgafs",
+      "id": 3
+    },
+    {
+      "UserName": "kanishak",
+      "E-mail address": "kanu@gmail.com",
+      "Password": "dahdsa",
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "UserName": "kanishak",
+      "E-mail address": "mahendiratta",
+      "Password": "kanisahak",
+      "id": 6
+    },
+    {
+      "UserName": "kanishak",
+      "E-mail address": "mahendiratta",
+      "Password": "kanisahak",
+      "id": 7
+    },
+    {
+      "UserName": "sda",
+      "id": 8
+    },
+    {
+      "UserName": "dfadsf",
+      "E-mail address": "ds",
+      "Password": "daffds",
+      "id": 9
+    },
+    {
+      "UserName": "fasda",
+      "id": 10
+    },
+    {
+      "UserName": "dsfas",
+      "id": 11
+    },
+    {
+      "UserName": "gvjgv",
+      "id": 12
+    },
+    {
+      "UserName": "gvjgv",
+      "id": 13
+    },
+    {
+      "UserName": "kanisahk",
+      "E-mail address": "mahendiratta",
+      "Password": "kanishak",
+      "id": 14
+    },
+    {
+      "UserName": "kanisah",
+      "E-mail address": "mahendiratta",
+      "Password": "sadas",
+      "id": 15
+    }
+  ],
+  "cart": [
+    {
+      "username": "kanishak",
+      "id": 1
+    },
+    {
+      "items": [
+        {
+          "itemName": "Masala Chai",
+          "priceOfThisItem": 350,
+          "price": 350,
+          "quantity": 1
+        },
+        {
+          "itemName": "Chhole Bhature",
+          "priceOfThisItem": 350,
+          "price": 350,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 700,
+      "charges": 0,
+      "GST": 35,
+      "total": 735,
+      "id": 2
+    }
+  ],
+  "order": [],
+  "address": {
+    "First Name": "dasa"
   }
 }

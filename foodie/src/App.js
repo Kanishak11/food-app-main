@@ -9,7 +9,14 @@ import SignIn from './views/signIn/SignIn';
 import CartMain from './components/cart/CartMain';
 import Menu from './views/menu/Menu';
 import Order from './views/order/Order';
+import axios from 'axios'
 
+axios.defaults.baseURL='https://food-app-timesinternet.herokuapp.com/'
+
+if (typeof window !== 'undefined' && localStorage.getItem('token')) {
+   axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+   
+}
 
 
 const App = () => (

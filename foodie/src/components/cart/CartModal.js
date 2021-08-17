@@ -1,31 +1,30 @@
 import React from 'react'
-import { Button, Header, Image, Modal ,Icon } from 'semantic-ui-react'
-import LoginForm from '../../views/login/Login'
-import './LoginModal.css'
-function ModalExampleModal(props) {
+import { Button, Header, Image, Modal } from 'semantic-ui-react'
+import CartMain from './CartMain'
+function CartModal() {
   const [open, setOpen] = React.useState(false)
+
   return (
-    <Modal className="centers"
+    <Modal
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-    
-      trigger={  <Icon name='sign-in' />}
+      trigger={<Button>Show Modal</Button>}
     >
       <Modal.Header>Select a Photo</Modal.Header>
       <Modal.Content image>
         <Image size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' wrapped />
         <Modal.Description>
-            <LoginForm/>
+          <Header>Default Profile Image</Header>
+          <CartMain/>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button color='black' onClick={() => setOpen(true)}>
+        <Button color='black' onClick={() => setOpen(false)}>
           Nope
         </Button>
         <Button
-          id="open"
-          content="Done"
+          content="Yep, that's me"
           labelPosition='right'
           icon='checkmark'
           onClick={() => setOpen(false)}
@@ -36,4 +35,4 @@ function ModalExampleModal(props) {
   )
 }
 
-export default ModalExampleModal
+export default CartModal

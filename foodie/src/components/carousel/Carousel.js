@@ -24,7 +24,7 @@ const Caros = (source) => {
 function Carousels() {
     return (
         <>
-        <Carousel >
+        <Carousel nextLabel="" prevLabel="">
             {arr.map( (src) => Caros(src))}
         </Carousel>
         </> 

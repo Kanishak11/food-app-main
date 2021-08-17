@@ -9,15 +9,18 @@ import {Navbar,NavDropdown,Nav} from 'react-bootstrap'
 import ModalExampleModal from '../login/LoginModal';
 import SearchModal from '../search/SearchModal';
 
+import  {useSelector} from 'react-redux';
+
 
 export default function Navb() {
+  const userDetail = useSelector(state => state.userDetail)
   const showEventHandler = () => {
     setShow(true)
   }
    const [show ,setShow] = useState(false)
     return (
   <Navbar bg="dark" expand="lg"  variant="dark" sticky="top">
-  <Navbar.Brand className="me-auto" style={{ marginLeft : '20px' }}> <Link to = "/">Foodie</Link></Navbar.Brand>
+  <LinkContainer style={{ marginLeft : '20px' }} to="/"><Navbar.Brand className="me-auto" > Foodie</Navbar.Brand></LinkContainer>
   <Navbar.Toggle aria-controls="navbarScroll" />
   <Navbar.Collapse id="navbarScroll">
     <Nav
@@ -31,21 +34,14 @@ export default function Navb() {
     <Nav.Link>Menu</Nav.Link>
 </LinkContainer>
 <LinkContainer to="/order">
-    <Nav.Link>Order</Nav.Link>
+    <Nav.Link  >Order</Nav.Link>
 </LinkContainer>
 
-
-      <NavDropdown title="Link" id="navbarScrollingDropdown">
-        <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-        <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item href="#action5">Something else here</NavDropdown.Item>
-      </NavDropdown>
-      
+<Nav.Link style={{ marginLeft : '350px' }} >{userDetail.username === ""  ? <p style={{color :"white"}}> Please Log In </p>: <p style={{color :"white"}}>Welcome {userDetail.username} </p> } </Nav.Link>
     </Nav>
-    <Nav><SearchModal/></Nav>
+    <Nav  ><SearchModal/></Nav>
     <Nav >
-    <Nav.Link> <ModalExampleModal/> </Nav.Link>
+    <Nav.Link > <ModalExampleModal/> </Nav.Link>
       <Nav.Link eventKey={2} href="#memes">
         Log Out
       </Nav.Link>
