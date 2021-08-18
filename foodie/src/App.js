@@ -13,12 +13,9 @@ import axios from 'axios'
 
 axios.defaults.baseURL='https://food-app-timesinternet.herokuapp.com/'
 
-if (typeof window !== 'undefined' && localStorage.getItem('token')) {
+if (typeof window !== 'undefined') {
    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
-   
 }
-
-
 const App = () => (
   <Provider store= {Store}>
   <Switch>

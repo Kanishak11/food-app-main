@@ -12,9 +12,8 @@ function ModalExampleModal(props) {
     
       trigger={  <Icon name='sign-in' />}
     >
-      <Modal.Header>Select a Photo</Modal.Header>
+      <Modal.Header>Log In</Modal.Header>
       <Modal.Content image>
-        <Image size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' wrapped />
         <Modal.Description>
             <LoginForm/>
         </Modal.Description>

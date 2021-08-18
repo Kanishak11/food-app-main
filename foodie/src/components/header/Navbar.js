@@ -37,7 +37,7 @@ export default function Navb() {
     <Nav.Link  >Order</Nav.Link>
 </LinkContainer>
 
-<Nav.Link style={{ marginLeft : '350px' }} >{userDetail.username === ""  ? <p style={{color :"white"}}> Please Log In </p>: <p style={{color :"white"}}>Welcome {userDetail.username} </p> } </Nav.Link>
+<div style={{ marginLeft : '350px' }} >{userDetail.username === ""  ? <p style={{color :"white"}}> Please Log In </p>: <p style={{color :"white"}}>Welcome {userDetail.username} </p> } </div>
     </Nav>
     <Nav  ><SearchModal/></Nav>
     <Nav >

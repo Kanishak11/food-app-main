@@ -26,6 +26,7 @@ const LoginForm = () =>  {
       }
     }).catch((err) => {
       setMessage(true)
+      setTimeout( () => setMessage(false) , 3000);
       console.log(err)})
   }
   return (

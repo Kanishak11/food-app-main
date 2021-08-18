@@ -10,13 +10,13 @@ const SearchCards = (props) =>{
   
   <Item.Group relaxed>
     <Item >
-      <Item.Image size='small' src='https://react.semantic-ui.com/images/wireframe/image.png' />
+      <Item.Image size='small' src={props.image} />
 
       <Item.Content verticalAlign="middle">
         <Item.Header>{props.name}</Item.Header>
         <Item.Meta>
-          <span className='price'>$1200</span>
-          <span className='stay'>Veg {props.image}</span>
+          <span className='price'>{props.price} INR</span>
+          <span className='stay'></span>
         </Item.Meta>
         <Item.Description>{paragraph}</Item.Description>
         <Item.Extra>
@@ -25,7 +25,7 @@ const SearchCards = (props) =>{
             Add To Cart
             <Icon name='right chevron' />
           </Button>
-          <Label>Limited</Label>
+          <Label>{props.type} </Label>
         </Item.Extra>
       </Item.Content>
     </Item>

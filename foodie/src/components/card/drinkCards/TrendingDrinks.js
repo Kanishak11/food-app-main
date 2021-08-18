@@ -6,7 +6,6 @@ export default function TrendingDrinks() {
     useEffect(async () => {   
     const data = await axios.get("https://api.punkapi.com/v2/beers").then( (response) => {
             const arr =  response.data
-            console.log(arr)
             const dataArr = arr.map((items) => ({name : items.name , image : items.image_url}))
             setDrinks(dataArr)
          }).catch(function (error) {

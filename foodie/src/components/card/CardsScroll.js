@@ -29,7 +29,6 @@ const responsive = {
 export default function CardsGsap(props) {
   const dispatch = useDispatch();
   const myItems = useSelector((state) => state.cartReducer);
-  console.log(props.data);
   return (
     <Carousel
       additionalTransfrom={60}
