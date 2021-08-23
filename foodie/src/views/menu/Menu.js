@@ -3,11 +3,13 @@ import FooterPagePro from '../../components/footer/Footer'
 import Navb from '../../components/header/Navbar'
 import MenuBody from './MenuBody'
 
-export default function Menu() {
+export default function Menu({match}) {
+
+ 
     return (
         <div>
-            <Navb/>
-            <MenuBody/>
+            <Navb />
+            <MenuBody />
             <FooterPagePro/>
         </div>
     )

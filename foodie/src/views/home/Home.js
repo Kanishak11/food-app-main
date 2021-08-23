@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useRef} from "react";
 import Carousels from "../../components/carousel/Carousel";
 import FooterPagePro from "../../components/footer/Footer";
 import Navb from "../../components/header/Navbar";
@@ -30,6 +30,8 @@ const food_items = [
 ];
 export default function Home() {
   return (
+    <>
+
     <div>
       <Navb />
       <Carousels />
@@ -49,5 +51,7 @@ export default function Home() {
       <br />
       <FooterPagePro />
     </div>
+
+    </>
   );
 }

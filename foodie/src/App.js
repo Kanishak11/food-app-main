@@ -19,22 +19,22 @@ if (typeof window !== 'undefined') {
 const App = () => (
   <Provider store= {Store}>
   <Switch>
-    <Route exact path="/" component={Home} />
+    <Route exact path="/Home/:id" component={Home} />
   </Switch>
   <Switch>
-    <Route exact path="/Login" component={LoginForm} />
+    <Route exact path="/Cart/:id" component={CartMain} />
   </Switch>
   <Switch>
-    <Route exact path="/SignIn" component={SignIn} />
+    <Route exact path="/Login/:id" component={LoginForm} />
   </Switch>
   <Switch>
-    <Route exact path="/Cart" component={CartMain} />
+    <Route exact path="/SignIn/:id" component={SignIn} />
   </Switch>
   <Switch>
-    <Route exact path="/Menu" component={Menu} />
+    <Route exact path="/Menu/:id" component={Menu} />
   </Switch>
   <Switch>
-    <Route exact path="/Order" component={Order} />
+    <Route exact path="/Order/:id" component={Order} />
   </Switch>
   </Provider>
 );

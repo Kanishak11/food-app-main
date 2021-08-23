@@ -1,7 +1,7 @@
 import {GET_SEARCH_ITEM} from '../constant/SearchItemsConstant'
 
 const DEFAULT_STATE = {
-    searchItemList: []
+    searchItemList : []
 }
 
 export const searchReducer = (state = DEFAULT_STATE ,action) => {

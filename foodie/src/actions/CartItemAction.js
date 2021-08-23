@@ -1,70 +1,83 @@
-import { ADD_TO_CART ,ADD_TO_SUBTOTAL,ADD_GST ,GET_TOTAL ,INC_QUANTITY ,DEC_QUANTITY } from "../constant/CartItemsConstant";
-
-
-const addItem = (item) => {
- return {
-    type : ADD_TO_CART,
-    payload : item
- }
+import {
+  DEC_QUANTITY,
+  FETCH_CART,
+  SET_LOADING,
+  OFFSET_LOADING
+} from "../constant/CartItemsConstant";
+import axios from "axios";
+let token;
+if (typeof window !== "undefined") {
+  token = localStorage.getItem("token");
 }
-const incrementPaticularItem = (data) => {
-    return {
-        type : ADD_TO_SUBTOTAL,
-        payload : data
-    }
-
-}
-const applyGST = () => {
-    return {
-    type : ADD_GST
-    }
+if (typeof window !== 'undefined' && localStorage.getItem('token')) {
+  axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
 
 }
 
+export const fetchData = () => async (dispatch) => {
+  console.log('hiii')
+  const promise = await axios
+    .get("https://food-app-timesinternet.herokuapp.com/api/customer/cart")
+    .then((res) => {
+      const data = res.data
+      return dispatch(cartData(data))
+    })
+    .catch((err) => console.log(err))
+};
 
-const totalAmount = () =>{
-    return {
-        type : GET_TOTAL
-    }
+const cartData = (data) => {
+  return {
+    type: FETCH_CART,
+    payload: data
+  }
 }
-const increaseQuantity = (data) => {
-    return {
-        type : INC_QUANTITY,
-        payload : data
-        }
-}
-const decreseQuantity = (data) => {
-    return {
-        type :  DEC_QUANTITY ,
-        payload : data
-    }
-}
-export const addToCart = (state,data) => (dispatch) => 
-{
-    !(state.items.some( (ele) => {
-        return ele.itemName === data.itemName
-    })) &&
-        dispatch(addItem(data)) &&
-        dispatch(incrementPaticularItem(data.price)) &&
-        dispatch(applyGST()) &&
-        dispatch(totalAmount())
-       
+const setLoadingTrue = () => {
+  return {
+    type : SET_LOADING,
+    payload : true
+  }
 }
 
-export const incItemCount = (state,data) => (dispatch) =>{
-    dispatch(increaseQuantity(data))
-    dispatch(incrementPaticularItem(Number(data.priceOfThisItem)))
-    dispatch(applyGST())
-    dispatch(totalAmount())
-  
+const setLoadingFalse = () => {
+  return {
+    type : OFFSET_LOADING,
+    payload : false
+  }
 }
+export const addToCart = (data) => async (dispatch) => {
+  await axios.put(`https://food-app-timesinternet.herokuapp.com/api/customer/cart/cart_item/${data}`,{})
+    .then(() => {dispatch(fetchData())})
+    .catch((err) => {
+      console.error(err)
+    });
+};
 
-export const decItemCount = (data) => (dispatch) => {
-    dispatch(decreseQuantity(data))
-    dispatch(applyGST())
-    dispatch(totalAmount())
-    return {
-        type : DEC_QUANTITY ,
-        payload :data
-    }
-}
+export const incItemCount = (data) => async (dispatch) => {
+  dispatch(setLoadingTrue())
+  console.log("increment", data.id)
+  await axios.put('https://food-app-timesinternet.herokuapp.com/api/customer/cart/cart_item', {
+    "quantity": data.quantity + 1,
+    "cartItemId": data.id
+  }).then( () => {
+    dispatch(setLoadingFalse())
+    return dispatch(fetchData())
+  }).catch(err => {
+    console.error(err)
+  });
+ 
+};
+
+export const decItemCount = (data) => async (dispatch) => {
+  dispatch(setLoadingTrue())
+  console.log("decrement", data.id)
+  await axios.put('https://food-app-timesinternet.herokuapp.com/api/customer/cart/cart_item', {
+    "quantity": data.quantity - 1,
+    "cartItemId": data.id
+  }).then( () => {
+    dispatch(setLoadingFalse())
+    return dispatch(fetchData())
+  }).catch(err => {
+    console.error(err)
+  });
+
+};

@@ -1,19 +1,25 @@
 import axios from "axios";
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Button } from "semantic-ui-react";
 
 export default function AddAddressForm() {
-  const [address ,setAddress] = useState({})
-  const changeHandler = (e) =>{
-    console.log(address)
-    setAddress({...address , [e.target.name] : e.target.value})
-  }
-  const submitData = (e) =>{
-    e.preventDefault()
-      const promise = axios.post('http://localhost:4001/address',address)
-      promise.then((res) => {console.log(res)})
-      .catch(err=>console.log(err))
-  }
+  const [address, setAddress] = useState({});
+  const changeHandler = (e) => {
+    console.log(address);
+    setAddress({ ...address, [e.target.name]: e.target.value });
+  };
+  const submitData = (e) => {
+    e.preventDefault();
+    const promise = axios.post(
+      "https://food-app-timesinternet.herokuapp.com/api/customer/address",
+      address
+    );
+    promise
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div>
       <form className="ui form">
@@ -24,7 +30,7 @@ export default function AddAddressForm() {
             <div className="field">
               <input
                 type="text"
-                name="First Name"
+                name="contactFirstName"
                 placeholder="First Name"
                 onChange={changeHandler}
               />
@@ -32,10 +38,9 @@ export default function AddAddressForm() {
             <div className="field">
               <input
                 type="text"
-                name="Last-name"
+                name="contactLastName"
                 placeholder="Last Name"
                 onChange={changeHandler}
-
               />
             </div>
           </div>
@@ -43,18 +48,26 @@ export default function AddAddressForm() {
         <div className="field">
           <label>Delivery Address</label>
           <div className="fields">
-            <div className="twelve wide field">
+            <div className="six wide field">
               <input
                 type="text"
-                name="address"
+                name="line1"
                 placeholder="Street Address"
+                onChange={changeHandler}
+              />
+            </div>
+            <div className="six wide field">
+              <input
+                type="text"
+                name="line2"
+                placeholder="Street Address Line 2"
                 onChange={changeHandler}
               />
             </div>
             <div className="four wide field">
               <input
                 type="text"
-                name="shipping[address-2]"
+                name="pincode"
                 placeholder="Pin Code"
                 onChange={changeHandler}
               />
@@ -62,31 +75,48 @@ export default function AddAddressForm() {
           </div>
         </div>
         <div className="field">
-        <div className="field">
           <label>Contact Detail</label>
-        <div className="six wide field">
+          <div className="fields">
+            <div className="six wide field">
               <input
                 type="Number"
-                name="Contact Detail"
+                name="contactNumber"
                 placeholder="Contact Detail"
                 onChange={changeHandler}
               />
-        </div>
-        <label>Alternate Contact Detail</label>
-        <div className="six wide field">
+            </div>
+            <div className="six wide field">
               <input
-                type="Number"
-                name="Alternate Contact Detail"
-                placeholder="Alternate Contact Detail"
+                type="Email"
+                name="contactEmail"
+                placeholder="Email"
                 onChange={changeHandler}
-
               />
+            </div>
+          </div>
+        </div>
+        <div className="field">
+          <div className="fields">
+            <div className="six wide field">
+              <input
+                type="text"
+                name="city"
+                placeholder="City"
+                onChange={changeHandler}
+              />
+            </div>
+            <div className="six wide field">
+              <input
+                type="text"
+                name="state"
+                placeholder="State"
+                onChange={changeHandler}
+              />
+            </div>
+          </div>
         </div>
         <div className="ui center aligned container">
           <Button onClick={submitData}>Submit</Button>
-        </div>
-        
-        </div>
         </div>
       </form>
     </div>

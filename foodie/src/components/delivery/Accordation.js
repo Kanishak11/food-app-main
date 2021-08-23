@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component  } from 'react'
 import { Accordion, Button, Icon } from 'semantic-ui-react'
 import SelectPaymentType from './SelectPaymentType'
 import ShowAddress from './ShowAddress'
@@ -44,11 +44,13 @@ export default class AccordionOrder extends Component {
           <Icon name='dropdown' />
           Select Address
         </Accordion.Title>
+        
         <Accordion.Content active={activeIndex === 1}>
+  
           <AddAdress/>
         <ShowAddress/>
-        <ShowAddress/>
-        <ShowAddress/>
+    
+
         <Button onClick={() => {this.handleClick(2)}}>Next</Button>
         </Accordion.Content>
 
@@ -63,7 +65,6 @@ export default class AccordionOrder extends Component {
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 2}>
         <SelectPaymentType/>
-
         </Accordion.Content>
       </Accordion>
     )

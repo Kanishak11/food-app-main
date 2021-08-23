@@ -6,7 +6,7 @@ import OrderBody from './OrderBody'
 export default function Order() {
     return (
         <>
-            <Navb/>
+            <Navb  / >
             <OrderBody/>
             <FooterPagePro/>
         </>

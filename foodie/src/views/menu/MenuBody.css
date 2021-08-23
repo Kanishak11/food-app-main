@@ -6,3 +6,6 @@ width: 120vw;
     margin-left:-5vw;
     width: 25vw;
 }
+.menuHeight{
+    min-height:150vh;
+}

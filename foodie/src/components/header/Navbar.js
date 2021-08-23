@@ -1,7 +1,7 @@
 import React ,{useState} from 'react'
 import './Navbar.css'
 import {
- Link
+ useRouteMatch
 } from "react-router-dom";
 import './Navbar.css';
 import {LinkContainer} from 'react-router-bootstrap'
@@ -13,6 +13,9 @@ import  {useSelector} from 'react-redux';
 
 
 export default function Navb() {
+  const {path , url} = useRouteMatch()
+  console.log(path,url)
+  const id  = url.split("/")
   const userDetail = useSelector(state => state.userDetail)
   const showEventHandler = () => {
     setShow(true)
@@ -20,7 +23,7 @@ export default function Navb() {
    const [show ,setShow] = useState(false)
     return (
   <Navbar bg="dark" expand="lg"  variant="dark" sticky="top">
-  <LinkContainer style={{ marginLeft : '20px' }} to="/"><Navbar.Brand className="me-auto" > Foodie</Navbar.Brand></LinkContainer>
+  <LinkContainer style={{ marginLeft : '20px' }} to={`/Home/${id[2]}`}><Navbar.Brand className="me-auto" > Foodie</Navbar.Brand></LinkContainer>
   <Navbar.Toggle aria-controls="navbarScroll" />
   <Navbar.Collapse id="navbarScroll">
     <Nav
@@ -30,10 +33,10 @@ export default function Navb() {
       <LinkContainer to="/cart">
     <Nav.Link>Cart</Nav.Link>
 </LinkContainer>
-<LinkContainer to="/menu">
+<LinkContainer to = {`/menu/${id[2]}`}>
     <Nav.Link>Menu</Nav.Link>
 </LinkContainer>
-<LinkContainer to="/order">
+<LinkContainer to={`/order/${id[2]}`}>
     <Nav.Link  >Order</Nav.Link>
 </LinkContainer>
 
