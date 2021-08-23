@@ -4,11 +4,20 @@ import './ShowAddress.css'
 import axios from 'axios'
 import { selectedAddress } from "../../actions/OrderAddressAction";
 import {useDispatch} from 'react-redux'
+let token;
+if (typeof window !== "undefined") {
+  token = localStorage.getItem("token");
+}
+
 export default function ShowAddress() {
   const dispatch = useDispatch()
   const [address , setAddress] = useState([])
   useEffect(()=>{
-    const promise = axios.get('/api/customer/address')
+    const promise = axios.get('/api/customer/address',{
+      headers:{
+        "Authorization":`Bearer ${token}`
+      }
+    })
     promise.then((res)=>{
       setAddress(res.data)
       console.log("address",res.data)

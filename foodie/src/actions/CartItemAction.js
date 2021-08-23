@@ -9,15 +9,15 @@ let token;
 if (typeof window !== "undefined") {
   token = localStorage.getItem("token");
 }
-if (typeof window !== 'undefined' && localStorage.getItem('token')) {
-  axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
-
-}
 
 export const fetchData = () => async (dispatch) => {
   console.log('hiii')
   const promise = await axios
-    .get("https://food-app-timesinternet.herokuapp.com/api/customer/cart")
+    .get("https://food-app-timesinternet.herokuapp.com/api/customer/cart", {
+      headers:{
+        "Authorization":`Bearer ${token}`
+      }
+    })
     .then((res) => {
       const data = res.data
       return dispatch(cartData(data))
@@ -45,7 +45,11 @@ const setLoadingFalse = () => {
   }
 }
 export const addToCart = (data) => async (dispatch) => {
-  await axios.put(`https://food-app-timesinternet.herokuapp.com/api/customer/cart/cart_item/${data}`,{})
+  await axios.put(`https://food-app-timesinternet.herokuapp.com/api/customer/cart/cart_item/${data}`,{},{
+    headers:{
+      "Authorization":`Bearer ${token}`
+    }
+  })
     .then(() => {dispatch(fetchData())})
     .catch((err) => {
       console.error(err)
@@ -58,6 +62,10 @@ export const incItemCount = (data) => async (dispatch) => {
   await axios.put('https://food-app-timesinternet.herokuapp.com/api/customer/cart/cart_item', {
     "quantity": data.quantity + 1,
     "cartItemId": data.id
+  },{
+    headers:{
+      "Authorization":`Bearer ${token}`
+    }
   }).then( () => {
     dispatch(setLoadingFalse())
     return dispatch(fetchData())
@@ -73,6 +81,10 @@ export const decItemCount = (data) => async (dispatch) => {
   await axios.put('https://food-app-timesinternet.herokuapp.com/api/customer/cart/cart_item', {
     "quantity": data.quantity - 1,
     "cartItemId": data.id
+  },{
+    headers:{
+      "Authorization":`Bearer ${token}`
+    }
   }).then( () => {
     dispatch(setLoadingFalse())
     return dispatch(fetchData())

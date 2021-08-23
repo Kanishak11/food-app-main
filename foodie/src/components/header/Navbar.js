@@ -8,11 +8,12 @@ import {LinkContainer} from 'react-router-bootstrap'
 import {Navbar,NavDropdown,Nav} from 'react-bootstrap'
 import ModalExampleModal from '../login/LoginModal';
 import SearchModal from '../search/SearchModal';
-
-import  {useSelector} from 'react-redux';
+import { logOut } from '../../actions/UserDetails'; 
+import  {useSelector,useDispatch} from 'react-redux';
 
 
 export default function Navb() {
+   const dispatch = useDispatch()
   const {path , url} = useRouteMatch()
   console.log(path,url)
   const id  = url.split("/")
@@ -40,12 +41,12 @@ export default function Navb() {
     <Nav.Link  >Order</Nav.Link>
 </LinkContainer>
 
-<div style={{ marginLeft : '350px' }} >{userDetail.username === ""  ? <p style={{color :"white"}}> Please Log In </p>: <p style={{color :"white"}}>Welcome {userDetail.username} </p> } </div>
+<div style={{ marginLeft : '350px' }} >{(userDetail.username === "" || userDetail.username ===null)  ? <p style={{color :"white"}}> Please Log In </p>: <p style={{color :"white"}}>Welcome {userDetail.username} </p> } </div>
     </Nav>
     <Nav  ><SearchModal/></Nav>
     <Nav >
     <Nav.Link > <ModalExampleModal/> </Nav.Link>
-      <Nav.Link eventKey={2} href="#memes">
+      <Nav.Link  onClick={()=> {dispatch(logOut())}}>
         Log Out
       </Nav.Link>
     </Nav>

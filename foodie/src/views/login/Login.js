@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React , {useState,useEffect} from 'react'
 import { Link ,useParams } from 'react-router-dom'
 import { Button, Form, Grid, Header, Image, Message} from 'semantic-ui-react'
 import axios from 'axios'
@@ -8,18 +8,18 @@ import {useDispatch} from 'react-redux'
 
 
 const LoginForm = () =>  {
-  const {id} = useParams()
-  const url = `api/customer/login?restaurantId=${id}`
+   const {id} = useParams()
+   const url = `/api/customer/login?restaurantId=${id}`
   const [message ,setMessage] =useState(false)
   const dipatch = useDispatch();
   const [userDetails ,setUserDetails] = useState({}) 
   const changeHandler = (e) => {
-    setUserDetails({...userDetails , [e.target.name] : e.target.value})
-    
+    setUserDetails({...userDetails , [e.target.name] : e.target.value}) 
   }
   const loginUser = () => {
     const promise = axios.post(`${url}`,userDetails)
     promise.then((res) => {
+      console.log('ji')
       const token = res.data.token
       if(token){
         dipatch(details(res.data))
@@ -54,3 +54,6 @@ const LoginForm = () =>  {
     )}
 
 export default LoginForm
+
+
+
