@@ -16,18 +16,6 @@ import ShowKitchenExperts from "../../components/kitchenExperts/ShowKitchenExper
 import Coupons from "../../components/cardForCoupons/Coupons";
 import axios from "axios";
 
-const food_items = [
-  { name: "Masala Chai" },
-  { name: "Chhole Bhature" },
-  { name: "rolls" },
-  { name: "Samosa" },
-  { name: "Kulche" },
-  { name: "panner Tikka" },
-  { name: "Panjiri" },
-  { name: "Pan" },
-  { name: "Pathrode" },
-  { name: "Jalebi" },
-];
 export default function Home() {
   return (
     <>
@@ -40,7 +28,7 @@ export default function Home() {
         <Coupons/>
       </div>
       <CardHeading data ={['trending food']}/>
-      <CardsScroll data={food_items} />
+      <CardsScroll/>
       <br />
       <CardHeading data ={['Our Kitchen Experts']}/>
       <ShowKitchenExperts />

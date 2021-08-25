@@ -5,6 +5,7 @@ import { addToCart } from "../../actions/CartItemAction";
 import {initialMenuItem,setLoading} from "../../actions/MenuItemAction"
 import Loading from './Loading';
 import SearchCards from "../../components/search/SearchCards";
+import './MenuBody.css'
 
 export default function MenuItemList() {
     const dispatch = useDispatch();
@@ -23,11 +24,11 @@ export default function MenuItemList() {
     <div className="bodyFlex">
       {!loading && myMenu.map((items, i) => {
         return (
-          <div key={i}>
             <SearchCards
+            key={i}
+              image={items.image.mainUrl}
               name={items.name}
               type={items.itemType}
-              image={items.image.mainUrl}
               price={items.sellingPrice}
               proceed={() => {
                 dispatch(
@@ -35,7 +36,6 @@ export default function MenuItemList() {
                 );
               }}
             />
-          </div>
         );
       })}
     </div>

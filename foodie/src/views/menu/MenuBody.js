@@ -16,7 +16,7 @@ export default function MenuBody() {
         <SideNav />
       </Grid.Column>
       <Grid.Column className="menu-container" width={8}>
-        <MenuItemList/>
+          <MenuItemList/>
       </Grid.Column>
       <Grid.Column width={5}>
         <Ref innerRef={contextRef}>

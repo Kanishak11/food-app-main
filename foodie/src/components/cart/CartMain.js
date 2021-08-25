@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Alert, Form, Spinner } from "react-bootstrap";
+import {Message} from 'semantic-ui-react';
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -15,6 +16,7 @@ if (typeof window !== "undefined") {
   token = localStorage.getItem("token");
 }
 export default function CartMain() {
+  const [couponApplied ,setCouponApplied] = useState('')
   const { id } = useParams();
   const dispatch = useDispatch();
   const [couponName, setCouponName] = useState("");
@@ -28,8 +30,13 @@ export default function CartMain() {
       },
     }).then((res) => 
     {console.log(res)
-    dispatch(fetchData())}
-    ).catch(err => {console.log(err)})
+    dispatch(fetchData())
+    setCouponApplied('Coupon Applied Successfully');
+  }
+    ).catch(error => {
+      setCouponApplied(error.response.data.message);
+      console.log(error.response.data.message)
+    })
   };
   useEffect(() => {
     dispatch(fetchData());
@@ -37,16 +44,6 @@ export default function CartMain() {
   const myItems = useSelector((state) => state.cartReducer);
   console.log("myitems" , myItems);
   const { loading, subtotal, GST, total ,discount } = useSelector((state) => state.cartReducer);
-  const sendCartItems = () => {
-    const promise = axios.post("http://localhost:4001/cart", myItems);
-    promise
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
   return (
     <div className="main">
       <Alert variant="primary">
@@ -63,7 +60,6 @@ export default function CartMain() {
           <p className="quantityPrice">Price</p>
         </div>
         {myItems.items.map((itm, i) => {
-
           return (
             <div className="product" key={i}>
               <p className="items">{itm.item.name}</p>
@@ -93,7 +89,7 @@ export default function CartMain() {
                 </Button>
               </div>
               {loading && <Spinner animation="grow" />}
-              <p className="quantityPrice">{itm.item.sellingPrice} Rup</p>
+              <p className="quantityPrice">{itm.item.sellingPrice} /-INR</p>
             </div>
           );
         })}
@@ -118,13 +114,14 @@ export default function CartMain() {
         />
         <Button onClick={applyCoupon}>Apply</Button>
       </div>
+      {couponApplied!=='' && <Message varient="danger">{couponApplied}</Message>}
       <div className="totalContainer">
         <p>Total</p>
         <p>{myItems.total}</p>
       </div>
       <Alert variant="primary" className="checkout">
         <Link to={`/order/${id}`}>
-          <Button onClick={sendCartItems}>PROCEED TO CHECKOUT</Button>{" "}
+          <Button>PROCEED TO CHECKOUT</Button>{" "}
         </Link>
       </Alert>
     </div>

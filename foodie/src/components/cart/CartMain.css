@@ -8,6 +8,9 @@
     margin: 2% 5% 0 2%;
      
 }
+.main p{
+    font-size:0.9em
+}
 
 .product {
     display: flex;
@@ -20,6 +23,8 @@
     position:static;
 }
 .items{
+    padding-left:1.1em;
+    font-size:0.9em;
     width: 40%;
     max-width: 40%;
 }
@@ -36,7 +41,11 @@
     flex-direction: row;
 }
 .quantityContainer p{
-    padding: 0 0px 0 10px;
+    padding: 0 1.1em 0 1.1em;
+
+}
+.quantityContainer button{
+    padding:0.2em;
 }
 .bi-plus-circle{
     transform: translateY(-5px);

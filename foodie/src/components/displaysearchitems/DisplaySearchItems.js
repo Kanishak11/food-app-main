@@ -16,7 +16,6 @@ function DisplaySearchItems() {
         return (
           <React.Fragment key={i}>
               <Cards
-                
                 name={items.name}
                 image={items.image.mainUrl}
                 price = {items.sellingPrice}

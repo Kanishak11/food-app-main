@@ -7,21 +7,23 @@ const SearchCards = (props) =>{
   return (
     <div className="menuCard">
   <Item.Group relaxed>
-    <Item >
+    <Item className="menuContainer">
       <Item.Image className="image-container" size='small' src={props.image} />
-      <Item.Content verticalAlign="middle">
-        <Item.Header>{props.name}</Item.Header>
-        <Item.Meta>
-          <span className='price'>{props.price} INR</span>
-          <span className='stay'></span>
-        </Item.Meta>
+      <Item.Content verticalAlign="right">
+        <Item.Header>
+          <p style={{fontSize:"1.5em" ,fontWeight:"bolder"}}>{props.name}</p></Item.Header>
+        <Item.Description>
+        </Item.Description>
+        <Item.Extra>  <Label>{props.type} </Label></Item.Extra>
         <Item.Extra>
-          <Button onClick ={props.proceed} primary floated='right'>
+          <Button className='menuButton'  onClick ={props.proceed} primary floated='right'>
             Add To Cart
             <Icon name='right chevron' />
           </Button>
-          <Label>{props.type} </Label>
         </Item.Extra>
+        <Item.Meta>
+          <span className='price'>Price :{props.price} INR</span>
+        </Item.Meta>
       </Item.Content>
     </Item>
   </Item.Group>

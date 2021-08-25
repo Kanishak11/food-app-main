@@ -14,7 +14,9 @@
 
 @media (max-width:600px) {
     .bodyFlex {
-        margin-left:1.5em;
+        display :flex;
+        flex-direction: column;
+        justify-content: center;
         width: 80vw;
     }
     .CartInside {
@@ -26,4 +28,17 @@
         justify-content: center;
         min-height: 150vh;
     }
+}
+@media (max-width:400px) {
+    .bodyFlex {
+        display :flex;
+        flex-direction: column;
+        justify-content: right;
+        margin-left: 50px;
+        width: 200px;
+    }
+    .CartInside {
+        display: none;
+    }
+    
 }
