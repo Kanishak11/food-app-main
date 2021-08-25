@@ -4,15 +4,15 @@ function escapeRegexCharacters(str) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
 let matches = []
+
 export const getItem = (word ,id) => {
     const promise =  axios.get(`https://food-app-timesinternet.herokuapp.com/api/customer/restaurant/${id}/item`)
     .then(res => {
-        const food = res.data
-        const food_items = food.map((value) =>{return value.name})
+        const food_items = res.data
         const escapeWord=escapeRegexCharacters(word.trim());
         matches = food_items.filter(itm => {
             const regex = new RegExp(`^${escapeWord}`,'gi');
-            return itm.match(regex)
+            return itm.name.match(regex)
         })
         if(escapeWord === ""){
             matches= []

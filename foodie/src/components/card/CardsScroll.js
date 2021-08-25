@@ -61,23 +61,23 @@ export default function CardsGsap(props) {
       slidesToSlide={1}
       swipeable
     >
-      {foodItem.map((items, i) => {
-        return (
-          <React.Fragment key={i}>
-              <Cards
-                
-                name={items.name}
-                image={items.image.mainUrl}
-                price = {items.sellingPrice}
-                proceed={() => {
-                  dispatch(
-                    addToCart(items.id))
-                }}
-              />
+        {foodItem.map((items, i) => {
+          return (
+            <React.Fragment key={i}>
+                <Cards
+                  
+                  name={items.name}
+                  image={items.image.mainUrl}
+                  price = {items.sellingPrice}
+                  proceed={() => {
+                    dispatch(
+                      addToCart(items.id))
+                  }}
+                />
 
-          </React.Fragment>
-        );
-      })}
+            </React.Fragment>
+          );
+        })}
     </Carousel>
   );
 }

@@ -10,7 +10,6 @@ let token;
 if (typeof window !== "undefined") {
   token = localStorage.getItem("token");
 }
-
 export const fetchData = () => async (dispatch) => {
   console.log('hiii')
   const promise = await axios

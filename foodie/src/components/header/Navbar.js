@@ -38,16 +38,20 @@ export default function Navb() {
     <Nav.Link>Menu</Nav.Link>
 </LinkContainer>
 <LinkContainer to={`/order/${id[2]}`}>
-    <Nav.Link  >Order</Nav.Link>
+    <Nav.Link  >CheckOut</Nav.Link>
+</LinkContainer>
+<LinkContainer to={`/Myorders/${id[2]}`}>
+    <Nav.Link>My Orders</Nav.Link>
 </LinkContainer>
 
-<div style={{ marginLeft : '350px' }} >{(userDetail.username === "" || userDetail.username ===null)  ? <p style={{color :"white"}}> Please Log In </p>: <p style={{color :"white"}}>Welcome {userDetail.username} </p> } </div>
+<div style={{ marginLeft : '20vw' }} >{(userDetail.username === "" || userDetail.username ===null)  ? <p style={{color :"white"}}> Please Log In </p>: <p style={{color :"white"}}>Welcome {userDetail.username} </p> } </div>
     </Nav>
     <Nav  ><SearchModal/></Nav>
     <Nav >
     <Nav.Link > <ModalExampleModal/> </Nav.Link>
-      <Nav.Link  onClick={()=> {dispatch(logOut())
-           window.location.reload()}}>
+      <Nav.Link  
+      onClick={()=> {dispatch(logOut())
+      window.location.reload()}}>
         Log Out
       </Nav.Link>
     </Nav>

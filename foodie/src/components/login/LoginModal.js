@@ -10,7 +10,7 @@ function ModalExampleModal(props) {
       onOpen={() => setOpen(true)}
       open={open}
     
-      trigger={  <Icon name='sign-in' />}
+      trigger={ <p>LOG IN</p>}
     >
       <Modal.Header>Log In</Modal.Header>
       <Modal.Content image>

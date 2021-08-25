@@ -1,5 +1,6 @@
 import React ,{useState, useEffect} from "react";
-import {Button} from 'semantic-ui-react'
+import {Button ,Message} from'semantic-ui-react'
+import { OverlayTrigger,Overlay ,Tooltip} from "react-bootstrap";
 import './ShowAddress.css'
 import axios from 'axios'
 import { selectedAddress } from "../../actions/OrderAddressAction";
@@ -10,8 +11,14 @@ if (typeof window !== "undefined") {
   token = localStorage.getItem("token");
 }
 
+const renderTooltip = (props) => (
+  <Tooltip id="button-tooltip" {...props}>
+    This Address is Selected
+  </Tooltip>
+);
 export default function ShowAddress() {
   const dispatch = useDispatch()
+  const [show , setShow] = useState(true)
   const [loading,setLoading] = useState(true)
   const [address , setAddress] = useState([])
   useEffect(()=>{
@@ -28,9 +35,11 @@ export default function ShowAddress() {
   },[])
   return (
     <>
+   
     {loading && <Spinner animation="border" />}
     {address.map((value , i) => {
       return (      
+ 
         <div key ={i} className="showadd">
       <div className="ui link card">
         <div className="content">
@@ -44,18 +53,28 @@ export default function ShowAddress() {
             <p>Mobile Number :{value.contactNumber}</p>
             <p>Email :{value.contactEmail}</p>
             <p>Pincode : {value.pincode}</p>
-
           </div>
         </div>
         <div className="extra content">
           <div className="right floated author">
-            <Button primary onClick = {() => {dispatch(selectedAddress(value))}}>
+            <br/>
+            <OverlayTrigger
+            rootClose={true}
+        trigger={'click'}
+        placement="top"
+        overlay={renderTooltip}
+      >
+          <Button className="selectButton" primary onClick = {() => {
+              dispatch(selectedAddress(value))
+            }}>
               Select
             </Button>
+            </OverlayTrigger>
           </div>
         </div>
       </div>
       </div>
+  
       )
     })}
     </>

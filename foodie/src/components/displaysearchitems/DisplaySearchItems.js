@@ -9,12 +9,26 @@ function DisplaySearchItems() {
     const dispatch = useDispatch();
     const searchItems = useSelector( state => state.searchItem)
     const myItems = useSelector( state => state.cartReducer)
-    console.log(searchItems.searchItemList)
+    console.log("search item list  " , searchItems.searchItemList)
     return (
         <div className="CardsContainer">
-        {searchItems.searchItemList.map( (items ,i ) => 
-            <div className="CardWrap"> <Cards key={i} name = {items} proceed = { () => {dispatch(addToCart(myItems,{itemName: items ,priceOfThisItem : 350 , price :350 , quantity : 1}))}} />  </div>   )
-    }
+        {searchItems.searchItemList.map((items, i) => {
+        return (
+          <React.Fragment key={i}>
+              <Cards
+                
+                name={items.name}
+                image={items.image.mainUrl}
+                price = {items.sellingPrice}
+                proceed={() => {
+                  dispatch(
+                    addToCart(items.id))
+                }}
+              />
+
+          </React.Fragment>
+        );
+      })}
     </div>
     )
 }

@@ -8,13 +8,11 @@ let token;
 if (typeof window !== "undefined") {
   token = localStorage.getItem("token");
 }
-
 export default function SelectPaymentType() {
   const dispatch = useDispatch()
   const address = useSelector((state) => state.orderAddressDetails.address);
   const contact = useSelector((state) => state.orderAddressDetails.contact);
   const coupon = useSelector((state) => state.orderAddressDetails.couponName)
-  const response = { status: "IMMUTABLE" };
   const placeOrder = () => {
     console.log(address, contact);
         axios
@@ -33,7 +31,7 @@ export default function SelectPaymentType() {
           })
           .catch((err) => {
             dispatch(orderFailed())
-            console.log(err)
+            console.log(err.message);
           });
   };
   const selected = () => {

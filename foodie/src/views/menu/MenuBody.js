@@ -1,5 +1,5 @@
-import React, { createRef, useState, useEffect } from "react";
-import { Grid, Sticky, Ref, Rail, Segment } from "semantic-ui-react";
+import React, { createRef } from "react";
+import { Grid, Sticky, Ref, Rail } from "semantic-ui-react";
 import CartMain from "../../components/cart/CartMain";
 import "./MenuBody.css";
 import SideNav from "./SideNav";

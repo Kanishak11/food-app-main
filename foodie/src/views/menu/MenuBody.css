@@ -13,12 +13,17 @@
 }
 
 @media (max-width:600px) {
-    .sideContainer{
-        display : none;
+    .bodyFlex {
+        margin-left:1.5em;
+        width: 80vw;
     }
     .CartInside {
         display: none;
-        margin-top: 40px;
-        width: 25vw;
+    }
+    .menu-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 150vh;
     }
 }

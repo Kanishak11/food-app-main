@@ -10,6 +10,7 @@ import CartMain from './components/cart/CartMain';
 import Menu from './views/menu/Menu';
 import Order from './views/order/Order';
 import axios from 'axios'
+import Myorders from './views/MyOrders/Myorders';
 
 axios.defaults.baseURL='https://food-app-timesinternet.herokuapp.com/'
 const App = () => (
@@ -31,6 +32,9 @@ const App = () => (
   </Switch>
   <Switch>
     <Route exact path="/Order/:id" component={Order} />
+  </Switch>
+  <Switch>
+    <Route exact path="/MyOrders/:id" component={Myorders} />
   </Switch>
   </Provider>
 );

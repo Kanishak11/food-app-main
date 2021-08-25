@@ -9,9 +9,11 @@ import {
   decItemCount,
   fetchData,
 } from "../../actions/CartItemAction";
-import { addCoupon } from "../../actions/OrderAddressAction";
 import { useParams } from "react-router";
-
+let token;
+if (typeof window !== "undefined") {
+  token = localStorage.getItem("token");
+}
 export default function CartMain() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -20,16 +22,21 @@ export default function CartMain() {
     setCouponName(event.target.value);
   };
   const applyCoupon = () => {
-    console.log("coupon");
-    dispatch(addCoupon(couponName));
+    axios.get(`api/customer/cart/coupon?coupon=${couponName}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => 
+    {console.log(res)
+    dispatch(fetchData())}
+    ).catch(err => {console.log(err)})
   };
   useEffect(() => {
     dispatch(fetchData());
   }, []);
   const myItems = useSelector((state) => state.cartReducer);
-  const { loading, subtotal, GST, total } = useSelector(
-    (state) => state.cartReducer
-  );
+  console.log("myitems" , myItems);
+  const { loading, subtotal, GST, total ,discount } = useSelector((state) => state.cartReducer);
   const sendCartItems = () => {
     const promise = axios.post("http://localhost:4001/cart", myItems);
     promise
@@ -56,7 +63,7 @@ export default function CartMain() {
           <p className="quantityPrice">Price</p>
         </div>
         {myItems.items.map((itm, i) => {
-          console.log(itm.id);
+
           return (
             <div className="product" key={i}>
               <p className="items">{itm.item.name}</p>
@@ -93,8 +100,8 @@ export default function CartMain() {
       </div>
       <div className="summary">
         <li>
-          <p>subtotal</p>
-          <p>{subtotal}</p>
+          <p>Discount</p>
+          <p>{discount}</p>
         </li>
         <li>
           <p>Delivery</p>
