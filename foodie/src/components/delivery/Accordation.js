@@ -46,11 +46,9 @@ export default class AccordionOrder extends Component {
         </Accordion.Title>
         
         <Accordion.Content active={activeIndex === 1}>
-  
           <AddAdress/>
         <ShowAddress/>
-    
-
+  
         <Button onClick={() => {this.handleClick(2)}}>Next</Button>
         </Accordion.Content>
 

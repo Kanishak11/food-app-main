@@ -2,4 +2,28 @@
     padding: 0;
     width: 15vw;
     margin: 20px 5px 20px 15px;
+    min-height: 50vh;
+    max-height: 60vh;
+}
+
+.CouponsImage{
+    min-height:15em;
+    max-height:15em;
+}
+
+@media (max-width:500px) {
+    .Coupons {
+        display:none;
+    }
+
+}
+
+@media (max-width:600px) {
+    .Coupons {
+        display:flex;
+        justify-content: center;
+        margin : 0px 0px 0px 50px;
+        width: 300px;
+        padding: 10px;
+    }
 }

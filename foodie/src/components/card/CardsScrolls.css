@@ -5,3 +5,18 @@
     background-color: #f6f2f2;
     background-image: linear-gradient(315deg, #d9d9d9f1 0%, #f6f2f2ce 74%);
 }
+
+@media (max-width:600px) {
+    .containers {
+        display: flex;
+        flex-direction: row;
+        height : 400px;
+        background-color: #f6f2f2;
+        background-image: linear-gradient(315deg, #d9d9d9f1 0%, #f6f2f2ce 74%);
+    }
+    .Cards{
+        width: 200px;
+        height : 200px;
+        background-color:red;
+    }
+}

@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect ,useState } from "react";
+import { useSelector ,useDispatch } from "react-redux";
 import axios from "axios";
+import { orderPlaced ,orderFailed } from "../../actions/OrderAddressAction";
 import ShowAddress from "./ShowAddress";
 
 let token;
@@ -9,18 +10,13 @@ if (typeof window !== "undefined") {
 }
 
 export default function SelectPaymentType() {
+  const dispatch = useDispatch()
   const address = useSelector((state) => state.orderAddressDetails.address);
   const contact = useSelector((state) => state.orderAddressDetails.contact);
+  const coupon = useSelector((state) => state.orderAddressDetails.couponName)
   const response = { status: "IMMUTABLE" };
   const placeOrder = () => {
     console.log(address, contact);
-    axios
-      .put("/api/customer/cart/status", response, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
         axios
           .post(
             "/api/customer/order",
@@ -32,12 +28,13 @@ export default function SelectPaymentType() {
             }
           )
           .then((res) => {
+            dispatch(orderPlaced())
             console.log(res);
           })
-          .catch((err) => console.log(err));
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
+          .catch((err) => {
+            dispatch(orderFailed())
+            console.log(err)
+          });
   };
   const selected = () => {
     //

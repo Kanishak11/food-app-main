@@ -4,10 +4,11 @@ import { useRouteMatch } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import Loaders from "../../components/loader/Loaders";
-import { getMenuById } from "../../actions/MenuItemAction";
+import { getMenuById ,initialMenuItem } from "../../actions/MenuItemAction";
 
 const SideNav = () => {
   const dispatch = useDispatch();
+  
   const { path, url } = useRouteMatch();
   const id = url.split("/");
   const [items, setItems] = useState([{}]);
@@ -25,8 +26,9 @@ const SideNav = () => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <Sidebar.Pushable style={{minHeight:"100vh"}}>
+    <>
       {loading && <Loaders />}
+    <Sidebar.Pushable style={{minHeight:"100vh" , minWidth :"100px" , left : "0px" ,marginLeft :"0px"}}>
       <Sidebar
         as={Menu}
         fluid
@@ -34,8 +36,15 @@ const SideNav = () => {
         inverted
         vertical
         visible
-        width="wide"
+        
       >
+        <Menu.Item
+            as="a"
+            onClick={() => {dispatch(initialMenuItem(id[2]))}}
+            center
+          >
+            ALL
+          </Menu.Item>
         {items.map((values, i) => (
           <Menu.Item
             key={i}
@@ -48,6 +57,7 @@ const SideNav = () => {
         ))}
       </Sidebar>
     </Sidebar.Pushable>
+    </>
   );
 };
 

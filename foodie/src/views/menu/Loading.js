@@ -11,7 +11,7 @@ function Loading() {
         from: { opacity: 0, color: 'blue' },
       })
       // ...
-      return <animated.div style={{...styles , height: '50vh' ,width : '50vw' ,display:'flex'}}>
+      return <animated.div style={{...styles ,}}>
            <p style={{margin :"auto" ,fontSize :'4em'}} >Loading.....</p>
            </animated.div>
 }

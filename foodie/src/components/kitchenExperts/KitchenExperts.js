@@ -8,13 +8,13 @@ const KitchenExperts = () => (
       <Card.Header>Daniel</Card.Header>
       <Card.Meta>Joined in 2016</Card.Meta>
       <Card.Description>
-        Daniel is a comedian living in Nashville.
+        Daniel is a professional chef living in Nashville.
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
       <a>
         <Icon name='user' />
-        10 Friends
+        100 Instagram Followers
       </a>
     </Card.Content>
   </Card>

@@ -1,6 +1,8 @@
-import { SELECTED_ADDRESS } from "../constant/OrderAddressConstant";
+import { SELECTED_ADDRESS ,ADD_COUPON ,ITEM_PLACED ,ITEM_FAILED } from "../constant/OrderAddressConstant";
 
 const DEFAULT_STATE = {
+    failed :false,
+    placed  : false, 
     address : {
         line1 : "" ,
         line2 : "",
@@ -12,9 +14,9 @@ const DEFAULT_STATE = {
         contactNumber : "",
         contactFirstName : "",
         contactLastName : ""
-    }
+    },
+    couponName : "" 
 }
-
 export const orderAddressDetails = (state = DEFAULT_STATE ,action) => {
     switch (action.type) {
         case SELECTED_ADDRESS :
@@ -30,6 +32,13 @@ export const orderAddressDetails = (state = DEFAULT_STATE ,action) => {
                 contactLastName: action.payload.contactLastName
             }
             return state
+        case ADD_COUPON :
+            return {...state , couponName : action.payload}
+        case ITEM_PLACED:
+            return {...state ,placed:true}
+        case ITEM_FAILED:
+            return {...state ,failed:true}
+
         default : 
             return state
     }

@@ -31,7 +31,7 @@ export default function Navb() {
       className="me-auto"
       navbarScroll
     >
-      <LinkContainer to="/cart">
+      <LinkContainer to={`/cart/${id[2]}`}>
     <Nav.Link>Cart</Nav.Link>
 </LinkContainer>
 <LinkContainer to = {`/menu/${id[2]}`}>
@@ -46,7 +46,8 @@ export default function Navb() {
     <Nav  ><SearchModal/></Nav>
     <Nav >
     <Nav.Link > <ModalExampleModal/> </Nav.Link>
-      <Nav.Link  onClick={()=> {dispatch(logOut())}}>
+      <Nav.Link  onClick={()=> {dispatch(logOut())
+           window.location.reload()}}>
         Log Out
       </Nav.Link>
     </Nav>

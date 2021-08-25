@@ -5,6 +5,7 @@ import {
   OFFSET_LOADING
 } from "../constant/CartItemsConstant";
 import axios from "axios";
+
 let token;
 if (typeof window !== "undefined") {
   token = localStorage.getItem("token");
@@ -31,27 +32,32 @@ const cartData = (data) => {
     payload: data
   }
 }
-const setLoadingTrue = () => {
+export const setLoadingTrue = () => {
   return {
     type : SET_LOADING,
     payload : true
   }
 }
 
-const setLoadingFalse = () => {
+export const setLoadingFalse = () => {
   return {
     type : OFFSET_LOADING,
     payload : false
   }
 }
 export const addToCart = (data) => async (dispatch) => {
+  dispatch(setLoadingTrue())
   await axios.put(`https://food-app-timesinternet.herokuapp.com/api/customer/cart/cart_item/${data}`,{},{
     headers:{
       "Authorization":`Bearer ${token}`
     }
   })
-    .then(() => {dispatch(fetchData())})
+    .then(() => {
+      dispatch(setLoadingFalse())
+      dispatch(fetchData())})
     .catch((err) => {
+    dispatch(setLoadingFalse())
+
       console.error(err)
     });
 };

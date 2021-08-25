@@ -1,0 +1,9 @@
+.CartInside{
+    display : flex;
+    flex-direction : row ;
+}
+
+.menu-container{
+    width : 5em;
+    height : auto;
+}

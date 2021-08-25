@@ -1,20 +1,21 @@
-import React from "react";
+import React  ,{useState ,useEffect}  from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./CardsScrolls.css";
 import Cards from "./Card";
 import "./Card.css";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 import { addToCart } from "../../actions/CartItemAction";
-
+import { useParams } from "react-router";
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
-    items:  7,
+    items:  6,
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 5,
+    items: 4,
     paritialVisibilityGutter: 40,
   },
   tablet: {
@@ -27,6 +28,15 @@ const responsive = {
   },
 };
 export default function CardsGsap(props) {
+  const {id} = useParams()
+  const [foodItem ,setFoodItem] = useState([])
+  useEffect(() => {
+    const promise =  axios.get(`https://food-app-timesinternet.herokuapp.com/api/customer/restaurant/${id}/item`)
+    promise.then((response) =>{
+      const data = response.data
+      setFoodItem(data)
+    }).catch((error) =>console.error(error))
+  },[])
   const dispatch = useDispatch();
   const myItems = useSelector((state) => state.cartReducer);
   return (
@@ -51,21 +61,17 @@ export default function CardsGsap(props) {
       slidesToSlide={1}
       swipeable
     >
-      {props.data.map((items, i) => {
+      {foodItem.map((items, i) => {
         return (
           <React.Fragment key={i}>
               <Cards
+                
                 name={items.name}
-                image={items.image}
+                image={items.image.mainUrl}
+                price = {items.sellingPrice}
                 proceed={() => {
                   dispatch(
-                    addToCart(myItems, {
-                      itemName: items.name,
-                      priceOfThisItem: 350,
-                      price: 350,
-                      quantity: 1,
-                    })
-                  );
+                    addToCart(items.id))
                 }}
               />
 

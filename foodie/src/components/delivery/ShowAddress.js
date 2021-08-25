@@ -4,6 +4,7 @@ import './ShowAddress.css'
 import axios from 'axios'
 import { selectedAddress } from "../../actions/OrderAddressAction";
 import {useDispatch} from 'react-redux'
+import {Spinner} from 'react-bootstrap'
 let token;
 if (typeof window !== "undefined") {
   token = localStorage.getItem("token");
@@ -11,6 +12,7 @@ if (typeof window !== "undefined") {
 
 export default function ShowAddress() {
   const dispatch = useDispatch()
+  const [loading,setLoading] = useState(true)
   const [address , setAddress] = useState([])
   useEffect(()=>{
     const promise = axios.get('/api/customer/address',{
@@ -19,12 +21,14 @@ export default function ShowAddress() {
       }
     })
     promise.then((res)=>{
+      setLoading(false)
       setAddress(res.data)
       console.log("address",res.data)
     }).catch((err)=> console.error(err))
   },[])
   return (
     <>
+    {loading && <Spinner animation="border" />}
     {address.map((value , i) => {
       return (      
         <div key ={i} className="showadd">
@@ -35,10 +39,11 @@ export default function ShowAddress() {
             <span className="category">{value.line2}</span>
           </div>
           <div className="description">
-            <p> First Name :{value.contactFirstName}</p>
+            <p>First Name :{value.contactFirstName}</p>
             <p>Last Name :{value.contactLastName}</p>
             <p>Mobile Number :{value.contactNumber}</p>
             <p>Email :{value.contactEmail}</p>
+            <p>Pincode : {value.pincode}</p>
 
           </div>
         </div>

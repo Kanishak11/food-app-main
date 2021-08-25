@@ -15,12 +15,29 @@
  }
 
 .couponFlex {
-  margin-left: 10%;
-  margin-right : 10%;
+  margin-left: 5%;
+  margin-right : 5%;
   width: 100%;
+  height : auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   background-image: linear-gradient(315deg, #d9d9d9f1 0%, #f6f2f2ce 74%);
- 
+}
+@media (max-width:600px) {
+  .couponFlex{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+
+  }
+}
+@media (max-width:400px) {
+  .couponFlex{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  }
 }

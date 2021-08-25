@@ -1,5 +1,4 @@
 .cartHeader{
-    
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -11,13 +10,12 @@
 }
 
 .product {
- 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-content: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border-bottom : 1px solid  rgba(255,0,0,0.3);
     position:static;
 }
@@ -29,8 +27,7 @@
     width: 20%;
     max-width: 20%;
     display: flex;
-    text-align: left;
-   
+    text-align: right;
 }
 .quantityContainer{
     width: 40%;
@@ -39,7 +36,7 @@
     flex-direction: row;
 }
 .quantityContainer p{
-    padding: 0 10px 0 10px;
+    padding: 0 0px 0 10px;
 }
 .bi-plus-circle{
     transform: translateY(-5px);
@@ -86,4 +83,8 @@
  }
  .add{
      background-image: url("https://pics.freeicons.io/uploads/icons/png/7172535051537355420-512.png");
+ }
+ .productsHeight{
+     max-height:30vh;
+     overflow: scroll;
  }

@@ -1,1 +1,5 @@
 export const SELECTED_ADDRESS = 'SELECTED_ADDRESS';
+export const ADD_COUPON = 'ADD_COUPON';
+export const ITEM_PLACED = 'ITEM_PLACED'
+export const ITEM_FAILED = 'ITEM_FAILED'
+

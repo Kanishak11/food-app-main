@@ -12,10 +12,10 @@ export default function MenuBody() {
 
   return (
     <Grid>
-      <Grid.Column floated="left" width={3}>
+      <Grid.Column className="sideContainer" floated="left" width={3}>
         <SideNav />
       </Grid.Column>
-      <Grid.Column className="menuHeight" width={8}>
+      <Grid.Column className="menu-container" width={8}>
         <MenuItemList/>
       </Grid.Column>
       <Grid.Column width={5}>

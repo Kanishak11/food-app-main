@@ -1,5 +1,6 @@
 import { GET_MENU_ITEMS ,SET_MENU_LOADING} from "../constant/MenuItemConstant";
 import axios from "axios";
+
 const getMenuItem = (data) => {
     return {
         type : GET_MENU_ITEMS,
@@ -13,7 +14,7 @@ export const setLoading = () =>{
         payload : true
     }
 }
-const offSetLoading =  () =>{
+export const offSetLoading =  () =>{
     return{
         type : SET_MENU_LOADING,
         payload :false

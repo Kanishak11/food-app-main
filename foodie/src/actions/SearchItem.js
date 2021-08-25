@@ -1,20 +1,24 @@
 import {GET_SEARCH_ITEM} from '../constant/SearchItemsConstant'
-
-const food_items = ['Palak Paneer', 'pizza' ,'Masala Chai' , 'Chhole Bhature' , 'rolls' , 'Samosa'  ,'Kulche' , 'panner Tikka' ,'Panjiri' ,'Pan' ,'Pathrode' ,'Jalebi']
-
+import axios from 'axios'
 function escapeRegexCharacters(str) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
-
-export const getItem = (word) => {
-    const escapeWord=escapeRegexCharacters(word.trim());
-    let matches = food_items.filter(itm => {
-        const regex = new RegExp(`^${escapeWord}`,'gi');
-        return itm.match(regex)
-    })
-    if(escapeWord === ""){
-        matches= []
-    }
+let matches = []
+export const getItem = (word ,id) => {
+    const promise =  axios.get(`https://food-app-timesinternet.herokuapp.com/api/customer/restaurant/${id}/item`)
+    .then(res => {
+        const food = res.data
+        const food_items = food.map((value) =>{return value.name})
+        const escapeWord=escapeRegexCharacters(word.trim());
+        matches = food_items.filter(itm => {
+            const regex = new RegExp(`^${escapeWord}`,'gi');
+            return itm.match(regex)
+        })
+        if(escapeWord === ""){
+            matches= []
+        }
+    }).catch(err => {console.error(err)})
+ 
     return {
         type :GET_SEARCH_ITEM,
         payload: matches

@@ -1,11 +1,24 @@
-.bodyFlex{
-width: 120vw;
+.bodyFlex {
+    width: 120vw;
 }
-.CartInside{
+
+.CartInside {
     margin-top: 40px;
-    margin-left:-5vw;
+    margin-left: -5vw;
     width: 25vw;
 }
-.menuHeight{
-    min-height:150vh;
+
+.menuHeight {
+    min-height: 150vh;
+}
+
+@media (max-width:600px) {
+    .sideContainer{
+        display : none;
+    }
+    .CartInside {
+        display: none;
+        margin-top: 40px;
+        width: 25vw;
+    }
 }

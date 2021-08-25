@@ -1,27 +1,52 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { Button } from "semantic-ui-react";
+import React, { useState ,useEffect } from "react";
+import { Button ,Message} from "semantic-ui-react";
+import {useParams} from 'react-router-dom'
 
+let token;
+if (typeof window !== "undefined") {
+  token = localStorage.getItem("token");
+}
 export default function AddAddressForm() {
+  const [successMessage ,setSuccessMessage] = useState(false)
+  const [failureMessage ,setFailureMessage] = useState({status : false, message : ""})
+  const {id} = useParams();
   const [address, setAddress] = useState({});
+  const [pincodesArray ,setPincodesArray] = useState([]);
   const changeHandler = (e) => {
     console.log(address);
     setAddress({ ...address, [e.target.name]: e.target.value });
   };
+  useEffect( () =>{
+    axios.get(`api/customer/restaurant/${id}/pincode`)
+    .then((res) =>{
+      const data = res.data ;
+      setPincodesArray(data)
+    }).catch((err) => console.log(err))
+  }, [])
   const submitData = (e) => {
     e.preventDefault();
     const promise = axios.post(
       "https://food-app-timesinternet.herokuapp.com/api/customer/address",
-      address
+      address , {
+        headers:{
+          "Authorization":`Bearer ${token}`
+        }
+      }
     );
     promise
       .then((res) => {
-        console.log(res);
+        setSuccessMessage(true)
+        setTimeout(() => {window.location.reload(); },1000)
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setFailureMessage({status: true , message : err.message})
+        console.log(err)});
   };
   return (
     <div>
+   {successMessage && <Message warning fluid>Address Saved Successfully</Message>}
+   {failureMessage.status && <Message warning fluid>{}</Message>}
       <form className="ui form">
         <h4 className="ui dividing header">Shipping Information</h4>
         <div className="field">
@@ -65,12 +90,15 @@ export default function AddAddressForm() {
               />
             </div>
             <div className="four wide field">
-              <input
-                type="text"
-                name="pincode"
-                placeholder="Pin Code"
-                onChange={changeHandler}
-              />
+              <select name ="pincode" onChange={changeHandler} >
+               <option readOnly>Select Pincode</option>
+              {pincodesArray.map((values ,i ) => {
+                return <option key={i} value={values?.pincode}>
+                  {values?.pincode}
+                </option>
+              })}
+              </select>
+  
             </div>
           </div>
         </div>

@@ -7,7 +7,7 @@ function CartModal() {
   return (
     <Modal
       onClose={() => setOpen(false)}
-      onOpen={() => setOpen(true)}
+      onOpen={() => setOpen('true')}
       open={open}
       trigger={<Button>Show Modal</Button>}
     >

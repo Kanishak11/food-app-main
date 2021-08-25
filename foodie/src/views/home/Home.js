@@ -39,13 +39,10 @@ export default function Home() {
       <div className="couponFlex">
         <Coupons/>
       </div>
-      <CardHeading data ={['trending' ,'food']}/>
+      <CardHeading data ={['trending food']}/>
       <CardsScroll data={food_items} />
       <br />
-      <CardHeading data ={['trending' ,'Drinks']}/>
-      <TrendingDrinks />
-      <br />
-      <CardHeading data ={['Our Kitchen' ,'Experts']}/>
+      <CardHeading data ={['Our Kitchen Experts']}/>
       <ShowKitchenExperts />
       <Testimonicals />
       <br />
