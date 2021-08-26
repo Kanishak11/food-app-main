@@ -15,15 +15,15 @@ const SearchCards = (props) =>{
         <Item.Description>
         </Item.Description>
         <Item.Extra>  <Label>{props.type} </Label></Item.Extra>
+        <Item.Extra>  <Label>{props.category} </Label> </Item.Extra>
+        <Item.Extra> <Label>{props.Available ? ' True' : ' False'} </Label> </Item.Extra>
+        <br/>
         <Item.Extra>
+        <span className='price'>Price :{props.price} INR</span>  
           <Button className='menuButton'  onClick ={props.proceed} primary floated='right'>
             Add To Cart
-            <Icon name='right chevron' />
           </Button>
         </Item.Extra>
-        <Item.Meta>
-          <span className='price'>Price :{props.price} INR</span>
-        </Item.Meta>
       </Item.Content>
     </Item>
   </Item.Group>

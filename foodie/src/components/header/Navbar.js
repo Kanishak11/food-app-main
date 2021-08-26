@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import './Navbar.css';
 import {LinkContainer} from 'react-router-bootstrap'
-import {Navbar,NavDropdown,Nav} from 'react-bootstrap'
+import {Navbar,NavDropdown,Nav,Container} from 'react-bootstrap'
 import ModalExampleModal from '../login/LoginModal';
 import SearchModal from '../search/SearchModal';
 import { logOut } from '../../actions/UserDetails'; 
@@ -24,7 +24,9 @@ export default function Navb() {
    const [show ,setShow] = useState(false)
     return (
   <Navbar bg="dark" expand="lg"  variant="dark" sticky="top">
+  
   <LinkContainer style={{ marginLeft : '20px' }} to={`/Home/${id[2]}`}><Navbar.Brand className="me-auto" > Foodie</Navbar.Brand></LinkContainer>
+ 
   <Navbar.Toggle aria-controls="navbarScroll" />
   <Navbar.Collapse id="navbarScroll">
     <Nav

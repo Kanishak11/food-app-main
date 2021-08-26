@@ -6,9 +6,8 @@ const KitchenExperts = (props) => (
     <Image style={{minHeight :"30vh"}} src={props.image}  size="medium"/>
     <Card.Content  >
       <Card.Header>{props.name}</Card.Header>
-      <Card.Meta>Joined in 2016</Card.Meta>
-      <Card.Description align="left">
-        {props.Description}
+      <Card.Description>
+      {props.Description}
       </Card.Description>
     </Card.Content>
     <Card.Content extra>

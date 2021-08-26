@@ -30,6 +30,8 @@ export default function MenuItemList() {
               name={items.name}
               type={items.itemType}
               price={items.sellingPrice}
+              category={items?.category?.name}
+              Available= {items?.category?.isAvailable}
               proceed={() => {
                 dispatch(
                   addToCart(items.id)
