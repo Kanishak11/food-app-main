@@ -49,6 +49,7 @@ export default function Home() {
     <>
       <div>
         <Navb cartPopUp={true} searchModal={true} menu={true} />
+        <Carousels/>
         <CardHeading data={["Coupons"]} />
         <div className="couponFlex">
           <Coupons />

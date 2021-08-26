@@ -9,7 +9,7 @@ const FooterPagePro = () => {
   const [data ,setData] = useState({})
   useEffect(()=>{
     axios.get(`api/customer/restaurant/${id}`).then(res =>{setData(res.data)}).catch(err => {setData({})})
-  })
+  },[])
   return (
     <section>
     <MDBFooter color="mdb-color" style ={{"backgroundColor":"#C7C7C7"}} className="font-small pt-4 mt-4">
@@ -78,7 +78,7 @@ const FooterPagePro = () => {
         <MDBRow className="d-flex align-items-center">
           <MDBCol md="8" lg="8">
             <p className="text-center text-md-left grey-text">
-              &copy; {new Date().getFullYear()} Copyright:{" "}
+              &copy; Copyright:{" "}
               <Link to="/"> Times Internet </Link>
             </p>
           </MDBCol>
