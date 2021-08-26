@@ -84,7 +84,7 @@ export default function CartMain() {
                 </Button>
               </div>
               {loading && <Spinner animation="grow" />}
-              <p className="quantityPrice">{itm.item.sellingPrice*itm.quantity} ₹</p>
+              <p className="quantityPrice">₹{itm.item.sellingPrice*itm.quantity}</p>
             </div>
           );
         })}
@@ -92,18 +92,18 @@ export default function CartMain() {
       <div className="summary">
         <li>
           <p>SubTotal</p>
-          <p>{discount+myItems.total}₹</p>
+          <p>₹{discount+myItems.total}</p>
         </li>
         <li>
           <p>Discount</p>
-          <p>{discount}₹</p>
+          <p>₹{discount}</p>
         </li>
       </div>
       <div className="offerInput">
         <Form.Control
           className="coupon"
           type="text"
-          placeholder= {coupon?.name === undefined ? 'Apply   coupon' : coupon?.name}
+          placeholder= {coupon?.name === undefined ? 'Apply coupon' : coupon?.name}
           value={couponName}
           onChange={couponEventHandler} 
         />
@@ -112,7 +112,7 @@ export default function CartMain() {
       {couponApplied!=='' && <Message varient="danger">{couponApplied}</Message>}
       <div className="totalContainer">
         <p>Total</p>
-        <p>{myItems.total}₹</p>
+        <p>₹{myItems.total}</p>
       </div>
       <Alert variant="primary" className="checkout">
         { myItems.items.length > 0 ?

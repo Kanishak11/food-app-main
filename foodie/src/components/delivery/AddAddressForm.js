@@ -2,13 +2,15 @@ import axios from "axios";
 import React, { useState ,useEffect } from "react";
 import { Button ,Message} from "semantic-ui-react";
 import {useParams} from 'react-router-dom'
+import { useForm } from "react-hook-form";
 
 let token;
 if (typeof window !== "undefined") {
   token = localStorage.getItem("token");
 }
 export default function AddAddressForm() {
-  const [successMessage ,setSuccessMessage] = useState(false)
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [successMessage ,setSuccessMessage] = useState("")
   const [failureMessage ,setFailureMessage] = useState({status : false, message : ""})
   const {id} = useParams();
   const [address, setAddress] = useState({});
@@ -24,8 +26,7 @@ export default function AddAddressForm() {
       setPincodesArray(data)
     }).catch((err) => console.log(err))
   }, [])
-  const submitData = (e) => {
-    e.preventDefault();
+  const onSubmit = (e) => {
     const promise = axios.post(
       "https://food-app-timesinternet.herokuapp.com/api/customer/address",
       address , {
@@ -37,31 +38,36 @@ export default function AddAddressForm() {
     promise
       .then((res) => {
         setSuccessMessage(true)
-        setTimeout(() => {window.location.reload(); },1000)
+        setTimeout(() => {window.location.reload();},1000)
       })
       .catch((err) => {
-        setFailureMessage({status: true , message : err.message})
+        setFailureMessage({status: true , message : err?.response?.data?.message})
         console.log(err)});
   };
+
   return (
     <div>
-   {successMessage && <Message warning fluid>Address Saved Successfully</Message>}
-   {failureMessage.status && <Message warning fluid>{}</Message>}
-      <form className="ui form">
+   {successMessage && <Message success fluid>Address Saved Successfully</Message>}
+   {failureMessage.status && <Message warning fluid>{failureMessage.message}</Message>}
+      <form onSubmit={handleSubmit(onSubmit)} className="ui form">
         <h4 className="ui dividing header">Shipping Information</h4>
         <div className="field">
           <label>Name</label>
           <div className="two fields">
             <div className="field">
               <input
+              {...register('contactFirstName', { required: true})}
                 type="text"
                 name="contactFirstName"
                 placeholder="First Name"
                 onChange={changeHandler}
               />
+                 {errors.contactFirstName && errors.contactFirstName.type === "required" && <span>This is required</span>}
+                 {errors.contactFirstName && errors.contactFirstName.type === "maxLength" && <span>Max length exceeded</span> }    
             </div>
             <div className="field">
               <input
+               {...register('contactLastName', { required: true})}
                 type="text"
                 name="contactLastName"
                 placeholder="Last Name"
@@ -75,6 +81,7 @@ export default function AddAddressForm() {
           <div className="fields">
             <div className="six wide field">
               <input
+               {...register('line1', { required: true})}
                 type="text"
                 name="line1"
                 placeholder="Street Address"
@@ -83,6 +90,7 @@ export default function AddAddressForm() {
             </div>
             <div className="six wide field">
               <input
+               {...register('line2', { required: true})}
                 type="text"
                 name="line2"
                 placeholder="Street Address Line 2"
@@ -97,6 +105,7 @@ export default function AddAddressForm() {
           <div className="fields">
             <div className="six wide field">
               <input
+               {...register('contactNumber', { required: true})}
                 type="Number"
                 name="contactNumber"
                 placeholder="Contact Detail"
@@ -105,6 +114,7 @@ export default function AddAddressForm() {
             </div>
             <div className="six wide field">
               <input
+               {...register('contactEmail', { required: true})}
                 type="Email"
                 name="contactEmail"
                 placeholder="Email"
@@ -118,6 +128,7 @@ export default function AddAddressForm() {
           <div className="fields">
             <div className="six wide field">
               <input
+               {...register('city', { required: true})}
                 type="text"
                 name="city"
                 placeholder="City"
@@ -126,6 +137,7 @@ export default function AddAddressForm() {
             </div>
             <div className="five wide field">
               <input
+               {...register('state', { required: true})}
                 type="text"
                 name="state"
                 placeholder="State"
@@ -133,7 +145,7 @@ export default function AddAddressForm() {
               />
             </div>
             <div className="four wide field">
-              <select name ="pincode" onChange={changeHandler} >
+              <select name ="pincode" onChange={changeHandler}>
                <option readOnly>Select Pincode</option>
               {pincodesArray.map((values ,i ) => {
                 return <option key={i} value={values?.pincode}>
@@ -145,8 +157,8 @@ export default function AddAddressForm() {
           </div>
         </div>
         <div className="ui center aligned container">
-          <Button onClick={submitData}>Submit</Button>
-        </div>
+        <input type="submit" />
+        </div> 
       </form>
     </div>
   );

@@ -24,12 +24,12 @@ export default function Home() {
 
     <div>
       <Navb  />
-      <Carousels />
+     
       <CardHeading data ={['Coupons']}/>
       <div className="couponFlex">
         <Coupons/>  
       </div>
-      <CardHeading data ={['Trending food']}/>
+      <CardHeading data ={['Food at a glance']}/>
       <CardsScroll/>
       <br />
       <ShowKitchenExperts />

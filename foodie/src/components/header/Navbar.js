@@ -38,13 +38,14 @@ export default function Navb() {
 <LinkContainer to = {`/menu/${id[2]}`}>
     <Nav.Link>Menu</Nav.Link>
 </LinkContainer>
-<LinkContainer to={`/Myorders/${id[2]}`}>
+{!(userDetail.username === "" || userDetail.username === null)  &&
+<LinkContainer to={`/Myorders/${id[2]}`}> 
     <Nav.Link>My Orders</Nav.Link>
-</LinkContainer>
+</LinkContainer>}
 
     </Nav>
     <Nav className="me-auto">
-<Nav.Link style={{color:'white'}} >{(userDetail.username === "" || userDetail.username ===null)  ? <p style={{color :"white"}}> Please Log In </p>: <p style={{color :"white"}}>Welcome {userDetail.username} </p> } </Nav.Link>
+    <Nav.Link style={{color:'white'}} >{(userDetail.username === "" || userDetail.username ===null)  ? <p style={{color :"white"}}> Please Log In </p>: <p style={{color :"white"}}>Welcome {userDetail.username} </p> } </Nav.Link>
    </Nav>
     <Nav.Link><CartPopUp/></Nav.Link>
     <Nav.Link><SearchModal/></Nav.Link>
