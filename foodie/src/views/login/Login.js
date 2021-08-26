@@ -39,13 +39,12 @@ const LoginForm = () =>  {
     <>
    {message && <Message warning fluid>Wrong Credentials!!</Message>}
    {successMessage && <Message warning fluid>Logged in successfully!!</Message>}
-
   <Grid textAlign='center' style={{ height: '60vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 400 }}>
       <Header as='h2' color='teal' textAlign='center'>
        Log-in to your account
       </Header>
-      <Form className='centers'>
+      <Form className='center'>
           <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' name="email" onChange = {changeHandler} />
           <Form.Input icon='lock' iconPosition='left'  placeholder='Password' type='password' name= "password" onChange={changeHandler} />
           <Button type='submit'  color='teal' fluid size='medium' onClick={loginUser}>

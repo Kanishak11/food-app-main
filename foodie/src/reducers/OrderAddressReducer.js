@@ -28,7 +28,7 @@ export const orderAddressDetails = (state = DEFAULT_STATE ,action) => {
             state.contact = {
                 contactEmail : action.payload.contactEmail,
                 contactNumber : action.payload.contactNumber,
-                contactFirstName: action.payload.contactNumber,
+                contactFirstName: action.payload.contactFirstName,
                 contactLastName: action.payload.contactLastName
             }
             return state

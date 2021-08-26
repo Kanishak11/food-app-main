@@ -43,22 +43,17 @@ export default function CartMain() {
   }, []);
   const myItems = useSelector((state) => state.cartReducer);
   console.log("myitems" , myItems);
-  const { loading, subtotal, GST, total ,discount } = useSelector((state) => state.cartReducer);
+  const { loading, subtotal, GST, total ,discount ,coupon } = useSelector((state) => state.cartReducer);
   return (
     <div className="main">
       <Alert variant="primary">
         <div className="cartHeader">
-          <p> My Cart : Total Items</p>
-          <p> Total Price</p>
+          <p>  Items</p>
+          <p> Price  </p>
         </div>
       </Alert>
       <div className="productsHeight">
-        <div className="product">
-          <p className="items">ITEMS</p>
-          <div className="quantityContainer"></div>
-
-          <p className="quantityPrice">Price</p>
-        </div>
+ 
         {myItems.items.map((itm, i) => {
           return (
             <div className="product" key={i}>
@@ -89,26 +84,26 @@ export default function CartMain() {
                 </Button>
               </div>
               {loading && <Spinner animation="grow" />}
-              <p className="quantityPrice">{itm.item.sellingPrice} /-INR</p>
+              <p className="quantityPrice">{itm.item.sellingPrice*itm.quantity} ₹</p>
             </div>
           );
         })}
       </div>
       <div className="summary">
         <li>
-          <p>Discount</p>
-          <p>{discount}</p>
+          <p>SubTotal</p>
+          <p>{discount+myItems.total}₹</p>
         </li>
         <li>
-          <p>Delivery</p>
-          <p>{GST}</p>
+          <p>Discount</p>
+          <p>{discount}₹</p>
         </li>
       </div>
       <div className="offerInput">
         <Form.Control
           className="coupon"
           type="text"
-          placeholder="Coupons"
+          placeholder= {coupon?.name === undefined ? 'Apply   coupon' : coupon?.name}
           value={couponName}
           onChange={couponEventHandler} 
         />
@@ -117,12 +112,15 @@ export default function CartMain() {
       {couponApplied!=='' && <Message varient="danger">{couponApplied}</Message>}
       <div className="totalContainer">
         <p>Total</p>
-        <p>{myItems.total}</p>
+        <p>{myItems.total}₹</p>
       </div>
       <Alert variant="primary" className="checkout">
+        { myItems.items.length > 0 ?
         <Link to={`/order/${id}`}>
           <Button>PROCEED TO CHECKOUT</Button>{" "}
         </Link>
+        : <Button disabled>PROCEED TO CHECKOUT</Button>
+        }
       </Alert>
     </div>
   );

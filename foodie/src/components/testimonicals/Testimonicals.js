@@ -5,7 +5,6 @@ export default function Testimonicals() {
         <section className="testimonials" id="testimonials">
         <div className="title white">
             <h2 className="title-text">They <span>S</span>aid About Us</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
         <div>
             <div className="content">

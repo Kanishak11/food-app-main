@@ -1,11 +1,10 @@
 import React from 'react'
-import { Image, Loader, Segment } from 'semantic-ui-react'
+import {Spinner} from 'react-bootstrap'
 
 const Loaders = () => (
-  <Segment inverted>
-    <Loader active inverted />
-    <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-  </Segment>
+  <Spinner animation="border" role="status" variant="light">
+  <span className="visually-hidden">Loading...</span>
+</Spinner>
 )
 
 export default Loaders

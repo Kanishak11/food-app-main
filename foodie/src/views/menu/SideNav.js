@@ -20,14 +20,12 @@ const SideNav = () => {
     menuCategory
       .then((res) => {
         setItems(res.data);
-        
         setLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
   return (
     <>
-      {loading && <Loaders />}
     <Sidebar.Pushable style={{minHeight:"100vh" , minWidth :"100px" , left : "0px" ,marginLeft :"0px"}}>
       <Sidebar
         as={Menu}
@@ -37,7 +35,8 @@ const SideNav = () => {
         vertical
         visible
         
-      >
+        >
+        {loading && <Loaders />}
         <Menu.Item
             as="a"
             onClick={() => {dispatch(initialMenuItem(id[2]))}}

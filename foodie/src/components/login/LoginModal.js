@@ -1,38 +1,29 @@
-import React from 'react'
-import { Button, Header, Image, Modal ,Icon } from 'semantic-ui-react'
+import React ,{useState} from 'react'
+import { Modal , Button  } from "react-bootstrap";
 import LoginForm from '../../views/login/Login'
 import './LoginModal.css'
-function ModalExampleModal(props) {
-  const [open, setOpen] = React.useState(false)
+
+
+function ModalExampleModal() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
-    <Modal className="centers"
-      onClose={() => setOpen(false)}
-      onOpen={() => setOpen(true)}
-      open={open}
-    
-      trigger={ <p>LOG IN</p>}
-    >
-      <Modal.Header>Log In</Modal.Header>
-      <Modal.Content image>
-        <Modal.Description>
-            <LoginForm/>
-        </Modal.Description>
-      </Modal.Content>
-      <Modal.Actions>
-        <Button color='black' onClick={() => setOpen(true)}>
-          Nope
-        </Button>
-        <Button
-          id="open"
-          content="Done"
-          labelPosition='right'
-          icon='checkmark'
-          onClick={() => setOpen(false)}
-          positive
-        />
-      </Modal.Actions>
-    </Modal>
-  )
+    <>
+      <p style={{color: 'white' , padding:'1.05em'}} onClick={handleShow}>
+        Login
+      </p>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Login</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>  <LoginForm/></Modal.Body>
+      </Modal>
+    </>
+  );
 }
+
 
 export default ModalExampleModal

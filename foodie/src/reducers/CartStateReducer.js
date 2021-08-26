@@ -20,7 +20,7 @@ export const cartReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
     case FETCH_CART:
       return {
-      ...state , items : action.payload.cartItemList ,total : action.payload.total ,discount : action.payload.discount
+      ...state , items : action.payload.cartItemList ,total : action.payload.total ,discount : action.payload.discount ,coupon : action.payload.coupon
       };
     case PROCEED_TO_CHECKOUT:
       return {

@@ -89,17 +89,7 @@ export default function AddAddressForm() {
                 onChange={changeHandler}
               />
             </div>
-            <div className="four wide field">
-              <select name ="pincode" onChange={changeHandler} >
-               <option readOnly>Select Pincode</option>
-              {pincodesArray.map((values ,i ) => {
-                return <option key={i} value={values?.pincode}>
-                  {values?.pincode}
-                </option>
-              })}
-              </select>
-  
-            </div>
+
           </div>
         </div>
         <div className="field">
@@ -124,6 +114,7 @@ export default function AddAddressForm() {
           </div>
         </div>
         <div className="field">
+        <label>Delivery Address</label>
           <div className="fields">
             <div className="six wide field">
               <input
@@ -133,13 +124,23 @@ export default function AddAddressForm() {
                 onChange={changeHandler}
               />
             </div>
-            <div className="six wide field">
+            <div className="five wide field">
               <input
                 type="text"
                 name="state"
                 placeholder="State"
                 onChange={changeHandler}
               />
+            </div>
+            <div className="four wide field">
+              <select name ="pincode" onChange={changeHandler} >
+               <option readOnly>Select Pincode</option>
+              {pincodesArray.map((values ,i ) => {
+                return <option key={i} value={values?.pincode}>
+                  {values?.pincode}
+                </option>
+              })}
+              </select>
             </div>
           </div>
         </div>

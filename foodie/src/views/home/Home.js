@@ -14,23 +14,24 @@ import Testimonicals from "../../components/testimonicals/Testimonicals";
 import KitchenExperts from "../../components/kitchenExperts/KitchenExperts";
 import ShowKitchenExperts from "../../components/kitchenExperts/ShowKitchenExperts";
 import Coupons from "../../components/cardForCoupons/Coupons";
+import { CartPopUp } from "../../components/cart/CartPopUp";
 import axios from "axios";
+import {Button} from 'react-bootstrap'
 
 export default function Home() {
   return (
     <>
 
     <div>
-      <Navb />
+      <Navb  />
       <Carousels />
       <CardHeading data ={['Coupons']}/>
       <div className="couponFlex">
-        <Coupons/>
+        <Coupons/>  
       </div>
       <CardHeading data ={['Trending food']}/>
       <CardsScroll/>
       <br />
-      <CardHeading data ={['Our Kitchen Experts']}/>
       <ShowKitchenExperts />
       <Testimonicals />
       <br />
