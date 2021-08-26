@@ -18,7 +18,7 @@ export default function Menu() {
  
     return (
         <div>
-            <Navb/>
+            <Navb cartPopUp={false} searchModal={true} menu={true} />
             <MenuBody />
             <FooterPagePro/>
         </div>

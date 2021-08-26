@@ -1,9 +1,15 @@
-import React from "react";
+import React ,{useState,useEffect} from "react";
 import './Footer.css'
 import { Link } from "react-router-dom";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
-
+import axios from "axios";
+import { useParams } from "react-router";
 const FooterPagePro = () => {
+  const {id} = useParams()
+  const [data ,setData] = useState({})
+  useEffect(()=>{
+    axios.get(`api/customer/restaurant/${id}`).then(res =>{setData(res.data)}).catch(err => {setData({})})
+  })
   return (
     <section>
     <MDBFooter color="mdb-color" style ={{"backgroundColor":"#C7C7C7"}} className="font-small pt-4 mt-4">
@@ -11,7 +17,7 @@ const FooterPagePro = () => {
         <MDBRow className="text-center text-md-left mt-3 pb-3">
           <MDBCol md="3" lg="3" xl="3" className="mx-auto mt-3">
             <h6 className="text-uppercase mb-4 font-weight-bold">
-              Company name
+            {data.name}
             </h6>
             <p>
               Everything about Company dispcription
@@ -55,10 +61,10 @@ const FooterPagePro = () => {
           <MDBCol md="4" lg="3" xl="3" className="mx-auto mt-3">
             <h6 className="text-uppercase mb-4 font-weight-bold">Contact</h6>
             <p>
-              <i className="fa fa-home mr-3" /> Noida
+              <i className="fa fa-home mr-3" /> {data?.address?.city}
             </p>
             <p>
-              <i className="fa fa-envelope mr-3" /> timesinternet.com
+              <i className="fa fa-envelope mr-3" /> {data?.email}
             </p>
             <p>
               <i className="fa fa-phone mr-3" /> 999999999

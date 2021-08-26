@@ -10,6 +10,13 @@
     min-height:15em;
     max-height:15em;
 }
+.CouponPricePara{
+    font-size:1.11em;
+    text-decoration: none;
+}
+.CouponCardContainer:hover{
+    transform: translate(-1%,-1%);
+}
 
 @media (max-width:500px) {
     .Coupons {

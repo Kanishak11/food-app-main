@@ -146,7 +146,6 @@ export default function AddAddressForm() {
             </div>
             <div className="four wide field">
               <select name ="pincode" onChange={changeHandler}>
-               <option readOnly>Select Pincode</option>
               {pincodesArray.map((values ,i ) => {
                 return <option key={i} value={values?.pincode}>
                   {values?.pincode}

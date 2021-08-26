@@ -45,7 +45,7 @@ const LoginForm = () =>  {
        Log-in to your account
       </Header>
       <Form className='center'>
-          <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' name="email" onChange = {changeHandler} />
+          <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' type='email' name="email" onChange = {changeHandler} />
           <Form.Input icon='lock' iconPosition='left'  placeholder='Password' type='password' name= "password" onChange={changeHandler} />
           <Button type='submit'  color='teal' fluid size='medium' onClick={loginUser}>
             Login

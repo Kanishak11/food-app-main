@@ -2,13 +2,27 @@ import {
   DEC_QUANTITY,
   FETCH_CART,
   SET_LOADING,
-  OFFSET_LOADING
+  OFFSET_LOADING,
+  SHOWERR,
+  ADDED
 } from "../constant/CartItemsConstant";
 import axios from "axios";
 
 let token;
 if (typeof window !== "undefined") {
   token = localStorage.getItem("token");
+}
+const showErrorMessage = (message) => {
+  return {
+    type:SHOWERR,
+    payload:message
+  }
+}
+const successOrder = (message) => {
+  return{
+    type:ADDED,
+    payload: message
+  }
 }
 export const fetchData = () => async (dispatch) => {
   console.log('hiii')
@@ -20,9 +34,10 @@ export const fetchData = () => async (dispatch) => {
     })
     .then((res) => {
       const data = res.data
-      return dispatch(cartData(data))
+      dispatch(cartData(data))
+     
     })
-    .catch((err) => console.log(err))
+    .catch((err) => dispatch(showErrorMessage(err.response.data.message)))
 };
 
 const cartData = (data) => {
@@ -53,11 +68,15 @@ export const addToCart = (data) => async (dispatch) => {
   })
     .then(() => {
       dispatch(setLoadingFalse())
-      dispatch(fetchData())})
+      dispatch(fetchData())
+      dispatch(successOrder(true))
+      dispatch(successOrder(false))
+    })
     .catch((err) => {
     dispatch(setLoadingFalse())
+    dispatch(showErrorMessage({type :true ,message:err.response.data.message}))
+    dispatch(showErrorMessage({type :false ,message:""}))
 
-      console.error(err)
     });
 };
 

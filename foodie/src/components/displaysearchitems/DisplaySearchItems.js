@@ -2,9 +2,11 @@ import React ,{useState,useEffect} from 'react'
 import  {addToCart} from '../../actions/CartItemAction'
 import Cards from '../card/Card'
 import './displaySearchItem.css'
+import {useDispatch} from 'react-redux'
 
 
 function DisplaySearchItems({FoodItem,word}) {
+  const dispatch = useDispatch()
   const [matches,setMatches] = useState([])
   useEffect( ()=> {
   function escapeRegexCharacters(str) {

@@ -6,7 +6,7 @@ import MyordersBody from './MyordersBody'
 export default function Myorders() {
     return (
         <div>
-            <Navb/>
+           <Navb cartPopUp={false} searchModal={false} menu={false} />
             <MyordersBody/>
             <FooterPagePro/>
         </div>

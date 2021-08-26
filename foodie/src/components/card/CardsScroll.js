@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { addToCart } from "../../actions/CartItemAction";
 import { useParams } from "react-router";
+
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
@@ -38,7 +39,7 @@ export default function CardsGsap(props) {
     }).catch((error) =>console.error(error))
   },[])
   const dispatch = useDispatch();
-  const myItems = useSelector((state) => state.cartReducer);
+
   return (
     <Carousel
       additionalTransfrom={60}
@@ -65,13 +66,11 @@ export default function CardsGsap(props) {
           return (
             <React.Fragment key={i}>
                 <Cards
-                  
                   name={items.name}
                   image={items.image.mainUrl}
                   price = {items.sellingPrice}
                   proceed={() => {
-                    dispatch(
-                      addToCart(items.id))
+                    dispatch(addToCart(items.id))
                   }}
                 />
 

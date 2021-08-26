@@ -24,10 +24,7 @@ export default function Order() {
     })
     return (
         <>
-            <Navb  / >
-            {orderPlaced && <Message> ORDER_PLACED SUCCESSFULLY</Message> }
-            {orderFailed && <Message> ORDER FAILED</Message> }
-
+            <Navb />
             <OrderBody/>
             <FooterPagePro/>
         </>

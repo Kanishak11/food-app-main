@@ -24,12 +24,12 @@ const Coupons = () => {
           }
         return (
     <div key = {i} className="Coupons">
-    <Card href="#" raised>
+    <Card className="CouponCardContainer" raised>
       <Image className="CouponsImage"
         src= {items?.banner?.mainUrl}
         size="medium"
       ></Image>
-      <Card.Description> <p>USE PROMOCODE : {items.name}</p></Card.Description>
+      <Card.Description> <p className="CouponPricePara" style={{fontSize:'0.85em',textDecoration:'none'}}> USE PROMOCODE: {items.name}</p></Card.Description>
     </Card>
   </div>)} ) }
 

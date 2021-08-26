@@ -9,5 +9,7 @@ export const INC_QUANTITY = 'INC_QUANTITY'
 export const FETCH_CART= 'FETCH_CART'
 export const SET_LOADING= 'SET_LOADING'
 export const OFFSET_LOADING = 'OFFSET_LOADING'
+export const SHOWERR ='SHOWERR'
+export const ADDED ='ADDED'
 
     
