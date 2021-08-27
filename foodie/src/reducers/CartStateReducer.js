@@ -10,7 +10,7 @@ import {
 
   let DEFAULT_STATE = {
     addedToCart : false, 
-    removedFromCart :{type:false ,message :""},
+    removedFromCart : {type:false ,message :""},
     loading : false,
     items: [],
     subtotal: 0,
@@ -32,7 +32,7 @@ export const cartReducer = (state = DEFAULT_STATE, action) => {
         }
       case  SHOWERR :
         return {
-          ...state , removedFromCart : {type:action.payload.type ,message:action.payload.message}
+          ...state , removedFromCart : {type:action.payload?.type , message:action.payload?.message}
         }
     case PROCEED_TO_CHECKOUT:
       return {

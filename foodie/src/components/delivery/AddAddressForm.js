@@ -77,33 +77,9 @@ export default function AddAddressForm() {
           </div>
         </div>
         <div className="field">
-          <label>Delivery Address</label>
-          <div className="fields">
-            <div className="six wide field">
-              <input
-               {...register('line1', { required: true})}
-                type="text"
-                name="line1"
-                placeholder="Street Address"
-                onChange={changeHandler}
-              />
-            </div>
-            <div className="six wide field">
-              <input
-               {...register('line2', { required: true})}
-                type="text"
-                name="line2"
-                placeholder="Street Address Line 2"
-                onChange={changeHandler}
-              />
-            </div>
-
-          </div>
-        </div>
-        <div className="field">
           <label>Contact Detail</label>
           <div className="fields">
-            <div className="six wide field">
+            <div className="eight wide field">
               <input
                {...register('contactNumber', { required: true})}
                 type="Number"
@@ -112,7 +88,7 @@ export default function AddAddressForm() {
                 onChange={changeHandler}
               />
             </div>
-            <div className="six wide field">
+            <div className="eight wide field">
               <input
                {...register('contactEmail', { required: true})}
                 type="Email"
@@ -124,7 +100,29 @@ export default function AddAddressForm() {
           </div>
         </div>
         <div className="field">
-        <label>Delivery Address</label>
+          <label>Delivery Address</label>
+          <div className="fields">
+            <div className="eight wide field">
+              <input
+               {...register('line1', { required: true})}
+                type="text"
+                name="line1"
+                placeholder="Street Address"
+                onChange={changeHandler}
+              />
+            </div>
+            <div className="eight wide field">
+              <input
+               {...register('line2', { required: true})}
+                type="text"
+                name="line2"
+                placeholder="Street Address Line 2"
+                onChange={changeHandler}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="field">
           <div className="fields">
             <div className="six wide field">
               <input
@@ -145,7 +143,8 @@ export default function AddAddressForm() {
               />
             </div>
             <div className="four wide field">
-              <select name ="pincode" onChange={changeHandler}>
+              <select placeholder="pincode" name ="pincode" onChange={changeHandler}>
+                <option>Select Pincode</option> 
               {pincodesArray.map((values ,i ) => {
                 return <option key={i} value={values?.pincode}>
                   {values?.pincode}

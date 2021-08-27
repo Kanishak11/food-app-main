@@ -46,11 +46,11 @@ export default function Navb(props) {
     <Nav.Link style={{color:'white'}} >{(userDetail.username === "" || userDetail.username ===null)  ? <p style={{color :"white"}}> User Not Logged in</p> : <p style={{color :"white"}}>Welcome {userDetail.username} </p> } </Nav.Link>
    </Nav>
    {props.menu && <LinkContainer to = {`/menu/${id[2]}`}>
-    <Nav.Link style={{color :"white"}}>Menu</Nav.Link>
+    <Nav.Link> <p style={{color :"white"}}>Menu</p></Nav.Link>
 </LinkContainer> }
 {!(userDetail.username === "" || userDetail.username === null)  &&
 <LinkContainer to={`/Myorders/${id[2]}`}> 
-    <Nav.Link style={{color :"white"}}>My Orders</Nav.Link>
+    <Nav.Link > <p style={{color :"white"}}>My Orders</p></Nav.Link>
 </LinkContainer>}
    {props.cartPopUp && <Nav.Link><CartPopUp/></Nav.Link>}
     {props.searchModal && <Nav.Link><SearchModal/></Nav.Link>}

@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import Carousels from "../../components/carousel/Carousel";
+import Carous from "../../components/carousel/Carousel";
 import FooterPagePro from "../../components/footer/Footer";
 import Navb from "../../components/header/Navbar";
 import "./Home.css";
@@ -26,7 +26,7 @@ export default function Home() {
   if (myItems.addedToCart) {
     toast.success("Item Added to cart", {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -37,7 +37,7 @@ export default function Home() {
   if (myItems.removedFromCart?.type) {
     toast.warn(myItems?.removedFromCart?.message, {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -49,13 +49,12 @@ export default function Home() {
     <>
       <div>
         <Navb cartPopUp={true} searchModal={true} menu={true} />
-        <Carousels/>
         <CardHeading data={["Coupons"]} />
         <div className="couponFlex">
           <Coupons />
         </div>
 
-        <CardHeading data={["Food at a glance"]} />
+        <CardHeading data={["Menu at a glance"]} />
         <CardsScroll />
         <br />
         <ShowKitchenExperts />
@@ -63,7 +62,7 @@ export default function Home() {
         <br />
         <ToastContainer
           position="bottom-right"
-          autoClose={5000}
+          autoClose={3000}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick

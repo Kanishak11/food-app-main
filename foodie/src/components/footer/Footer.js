@@ -1,14 +1,15 @@
 import React ,{useState,useEffect} from "react";
 import './Footer.css'
 import { Link } from "react-router-dom";
+import {Image} from 'semantic-ui-react'
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 import axios from "axios";
 import { useParams } from "react-router";
 const FooterPagePro = () => {
   const {id} = useParams()
-  const [data ,setData] = useState({})
+  const [data ,setData] = useState({name:'' ,address : {} ,logo:{}})
   useEffect(()=>{
-    axios.get(`api/customer/restaurant/${id}`).then(res =>{setData(res.data)}).catch(err => {setData({})})
+    axios.get(`api/customer/restaurant/${id}`).then(res =>{setData(res.data)}).catch(err => {console.log(err)})
   },[])
   return (
     <section>
@@ -20,23 +21,24 @@ const FooterPagePro = () => {
             {data.name}
             </h6>
             <p>
-              Everything about Company dispcription
+              {data.address.line1}  , {data.address.line2}
             </p>
+            <Image src={data?.logo?.mainUrl} size='tiny' />
           </MDBCol>
           <hr className="w-100 clearfix d-md-none" />
           <MDBCol md="2" lg="2" xl="2" className="mx-auto mt-3">
             <h6 className="text-uppercase mb-4 font-weight-bold">Products</h6>
             <p>
-              <Link to="/">Home</Link>
+              <Link to="#">Home</Link>
             </p>
             <p>
-              <Link to="/">About</Link>
+              <Link to="#">About</Link>
             </p>
             <p>
-              <Link to="/">BrandFlow</Link>
+              <Link to="#">BrandFlow</Link>
             </p>
             <p>
-              <Link to="/">Other Link</Link>
+              <Link to="#">Other Link</Link>
             </p>
           </MDBCol>
           <hr className="w-100 clearfix d-md-none" />
@@ -45,16 +47,16 @@ const FooterPagePro = () => {
               Useful links
             </h6>
             <p>
-              <Link to="/">Your Account</Link>
+              <Link to="#">Your Account</Link>
             </p>
             <p>
-              <Link to="/">Become an Affiliate</Link>
+              <Link to="#">Become an Affiliate</Link>
             </p>
             <p>
-              <Link to="/">Shipping Rates</Link>
+              <Link to="#">Shipping Rates</Link>
             </p>
             <p>
-              <Link to="/">Help</Link>
+              <Link to="#">Help</Link>
             </p>
           </MDBCol>
           <hr className="w-100 clearfix d-md-none" />

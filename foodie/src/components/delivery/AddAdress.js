@@ -16,7 +16,7 @@ function AddAdress() {
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Login</Modal.Title>
+          <Modal.Title>AddAdress</Modal.Title>
         </Modal.Header>
         <Modal.Body>  
         <AddAddressForm/>
