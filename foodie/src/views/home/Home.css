@@ -33,7 +33,6 @@
 
 @media (max-width:600px) {
   .couponFlex{
-    width: auto;
     display: flex;
     flex-direction: column;
   }

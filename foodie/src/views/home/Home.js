@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import Carous from "../../components/carousel/Carousel";
+import React, { useRef ,useEffect} from "react";
+import Carousels from "../../components/carousel/Carousel";
 import FooterPagePro from "../../components/footer/Footer";
 import Navb from "../../components/header/Navbar";
 import "./Home.css";
@@ -20,8 +20,18 @@ import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+let token;
+if (typeof window !== "undefined") {
+  token = localStorage.getItem("token");
+}
 export default function Home() {
+  useEffect(() => {
+    axios.put("/api/customer/cart/status", { status: "MUTABLE" }, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => {console.log(res)}).catch(err => {console.log(err)})
+})
   const myItems = useSelector((state) => state.cartReducer);
   if (myItems.addedToCart) {
     toast.success("Item Added to cart", {
@@ -49,6 +59,7 @@ export default function Home() {
     <>
       <div>
         <Navb cartPopUp={true} searchModal={true} menu={true} />
+        <Carousels/>
         <CardHeading data={["Coupons"]} />
         <div className="couponFlex">
           <Coupons />
@@ -59,7 +70,6 @@ export default function Home() {
         <br />
         <ShowKitchenExperts />
         <Testimonicals />
-        <br />
         <ToastContainer
           position="bottom-right"
           autoClose={3000}
@@ -71,6 +81,7 @@ export default function Home() {
           draggable
           pauseOnHover
         />
+        <br />
         <FooterPagePro />
       </div>
     </>

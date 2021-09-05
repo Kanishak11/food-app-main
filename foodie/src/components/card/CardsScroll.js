@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { addToCart } from "../../actions/CartItemAction";
 import { useParams } from "react-router";
+import { fetchData } from '../../actions/CartItemAction'
+
 
 const responsive = {
   superLargeDesktop: {
@@ -31,7 +33,10 @@ const responsive = {
 export default function CardsGsap(props) {
   const {id} = useParams()
   const [foodItem ,setFoodItem] = useState([])
+  const itemsInCart = useSelector(state => state.cartReducer)
+  console.log(itemsInCart, "items in cart")
   useEffect(() => {
+    dispatch(fetchData());
     const promise =  axios.get(`https://food-app-timesinternet.herokuapp.com/api/customer/restaurant/${id}/item`)
     promise.then((response) =>{
       const data = response.data
@@ -66,6 +71,7 @@ export default function CardsGsap(props) {
           return (
             <React.Fragment key={i}>
                 <Cards
+                  itemId={items.id}
                   name={items.name}
                   image={items.image.mainUrl}
                   price = {items.sellingPrice}

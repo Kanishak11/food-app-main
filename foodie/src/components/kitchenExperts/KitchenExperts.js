@@ -10,12 +10,6 @@ const KitchenExperts = (props) => (
       {props.Description}
       </Card.Description>
     </Card.Content>
-    <Card.Content extra>
-      <a>
-        <Icon name='user' />
-        100 Instagram Followers
-      </a>
-    </Card.Content>
   </Card>
 )
 

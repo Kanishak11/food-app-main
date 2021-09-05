@@ -37,7 +37,7 @@ export const fetchData = () => async (dispatch) => {
       dispatch(cartData(data))
      
     })
-    .catch((err) => dispatch(showErrorMessage(err.response.data.message)))
+    .catch((err) => dispatch(showErrorMessage(err?.response?.data?.message)))
 };
 
 const cartData = (data) => {
@@ -74,7 +74,7 @@ export const addToCart = (data) => async (dispatch) => {
     })
     .catch((err) => {
     dispatch(setLoadingFalse())
-    dispatch(showErrorMessage({type :true ,message:err.response.data.message}))
+    dispatch(showErrorMessage({type :true ,message:err?.response?.data?.message}))
     dispatch(showErrorMessage({type :false ,message:""}))
 
     });
@@ -84,7 +84,7 @@ export const incItemCount = (data) => async (dispatch) => {
   dispatch(setLoadingTrue())
   console.log("increment", data.id)
   await axios.put('https://food-app-timesinternet.herokuapp.com/api/customer/cart/cart_item', {
-    "quantity": data.quantity + 1,
+    "quantity": Number(data.quantity) + 1,
     "cartItemId": data.id
   },{
     headers:{
@@ -94,7 +94,7 @@ export const incItemCount = (data) => async (dispatch) => {
     dispatch(setLoadingFalse())
     return dispatch(fetchData())
   }).catch(err => {
-    console.error(err)
+    console.error(err?.response?.data?.message)
   });
  
 };
@@ -103,8 +103,8 @@ export const decItemCount = (data) => async (dispatch) => {
   dispatch(setLoadingTrue())
   console.log("decrement", data.id)
   await axios.put('https://food-app-timesinternet.herokuapp.com/api/customer/cart/cart_item', {
-    "quantity": data.quantity - 1,
-    "cartItemId": data.id
+    "quantity": data?.quantity - 1,
+    "cartItemId": data?.id
   },{
     headers:{
       "Authorization":`Bearer ${token}`
